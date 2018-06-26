@@ -10,7 +10,20 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-});
+},
+{
+    /* The header config from HomeScreen is now here */
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#202E39',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Me',
@@ -28,7 +41,19 @@ HomeStack.navigationOptions = {
 
 const ExpertsStack = createStackNavigator({
   Links: ExpertsScreen,
-});
+},
+{
+    /* The header config from HomeScreen is now here */
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#202E39',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  });
 
 ExpertsStack.navigationOptions = {
   tabBarLabel: 'Experts',
@@ -42,7 +67,19 @@ ExpertsStack.navigationOptions = {
 
 const CommunityStack = createStackNavigator({
   Links: CommunityScreen,
-});
+},
+{
+    /* The header config from HomeScreen is now here */
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#202E39',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  });
 
 CommunityStack.navigationOptions = {
   tabBarLabel: 'Community',
@@ -56,7 +93,19 @@ CommunityStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
-});
+},
+{
+    /* The header config from HomeScreen is now here */
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: '#202E39',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  });
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
@@ -67,6 +116,7 @@ SettingsStack.navigationOptions = {
     />
   ),
 };
+
 
 export default createBottomTabNavigator({
   HomeStack,
