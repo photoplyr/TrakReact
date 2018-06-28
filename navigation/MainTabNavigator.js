@@ -10,14 +10,20 @@ import SettingsScreen from '../screens/SettingsScreen';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
-},
+}
+,
 {
     /* The header config from HomeScreen is now here */
     navigationOptions: {
+
+      // header: null,
       headerStyle: {
-        backgroundColor: '#202E39',
+         position: 'absolute',
+        backgroundColor: 'transparent',
+        zIndex: 100, top: 0, left: 0, right: 0
       },
-      headerTintColor: '#fff',
+      // headerTitle: 'Hello World',
+      headerTintColor: 'white',
       headerTitleStyle: {
         fontWeight: 'bold',
       },
@@ -46,7 +52,7 @@ const ExpertsStack = createStackNavigator({
     /* The header config from HomeScreen is now here */
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#202E39',
+        backgroundColor: '#6092EE',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -72,7 +78,7 @@ const CommunityStack = createStackNavigator({
     /* The header config from HomeScreen is now here */
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#202E39',
+        backgroundColor: '#6092EE',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {
@@ -98,7 +104,7 @@ const SettingsStack = createStackNavigator({
     /* The header config from HomeScreen is now here */
     navigationOptions: {
       headerStyle: {
-        backgroundColor: '#202E39',
+        backgroundColor: '#6092EE',
       },
       headerTintColor: '#fff',
       headerTitleStyle: {

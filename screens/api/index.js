@@ -1,7 +1,15 @@
 // @flow
 
-const recipes = require("./recipes");
+const todo = require("./todo");
+const users = require("./users");
 
+export type User = {
+    id: string,
+    name: string,
+    picture: string,
+    caption: string,
+    cover: Picture
+};
 
 export type Ingredient = {
     checked: boolean,
@@ -11,8 +19,9 @@ export type Ingredient = {
 
 
 
-const api: Food = {
-    recipes: recipes.recipes
+const api: todoList = {
+    todo: todo.recipes,
+     me: (): User => users.filter(user => user.id === "schavez")[0],
 };
 
 export default api;
