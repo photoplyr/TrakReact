@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import { StyleSheet,Platform,Button,TouchableOpacity,Text,Image } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
@@ -14,7 +14,7 @@ const HomeStack = createStackNavigator({
 ,
 {
     /* The header config from HomeScreen is now here */
-    navigationOptions: {
+    navigationOptions: ({ navigation, screenProps }) => ({
 
       // header: null,
       headerStyle: {
@@ -22,12 +22,25 @@ const HomeStack = createStackNavigator({
         backgroundColor: 'transparent',
         zIndex: 100, top: 0, left: 0, right: 0
       },
+
+      headerLeft: <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      <Image
+        style={styles.button}
+        source={require('../assets/images/menu.png')}
+      />
+    </TouchableOpacity>,
+
+      // headerLeft: <Button <img src={"../assets/images/app.png"} onPress={() => navigation.navigate('Options')} />,
+
+      // headerLeft: <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+      // <Text>Home</Text> </TouchableOpacity>
+      // // headerLeft:<Button title ="menu"/>,
       // headerTitle: 'Hello World',
       headerTintColor: 'white',
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-    },
+    }),
   }
 );
 
@@ -123,6 +136,13 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+const styles = StyleSheet.create({
+button: {
+   marginLeft:10,
+    width: 20,
+    height: 20,
+  }
+});
 
 export default createBottomTabNavigator({
   HomeStack,
