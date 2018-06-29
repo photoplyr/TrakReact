@@ -1,7 +1,7 @@
 import autobind from "autobind-decorator";
 import * as React from "react";
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
-
+import Grid from 'react-native-grid-component';
 import {StyleSheet, View,Text,ScrollView,FlatList} from "react-native";
 
 import {
@@ -61,6 +61,12 @@ export default class HomeScreen extends React.Component <NavigationProps<>>{
                 // onPress
             };
 
+    _renderItem = (data, i) => (
+       <View style={[{ backgroundColor: data }, styles.griditem]} key={i} />
+     );
+
+    _renderPlaceholder = i => <View style={styles.griditem} key={i} />;
+
     return (
 
        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
@@ -88,34 +94,46 @@ export default class HomeScreen extends React.Component <NavigationProps<>>{
                     renderItem={({ item }) => {
                       return (
 
-                  <View style={styles.listContainer}>
-                        <AnimatedCircularProgress
-                          size={100}
-                          width={15}
-                          fill={item.value}
-                          tintColor="#00e0ff"
-                          onAnimationComplete={() => console.log('onAnimationComplete')}
-                          backgroundColor="#3d5875">
-                          {
-                            (fill) => (
-                              <Text style={styles.points}>
-                                {item.value}
-                              </Text>
-                            )
-                          }
-                          </AnimatedCircularProgress>
+                        <View style={styles.listContainer}>
+                              <AnimatedCircularProgress
+                                size={100}
+                                width={15}
+                                fill={item.value}
+                                tintColor="#00e0ff"
+                                onAnimationComplete={() => console.log('onAnimationComplete')}
+                                backgroundColor="#3d5875">
+                                {
+                                  (fill) => (
+                                    <Text style={styles.points}>
+                                      {item.value}
+                                    </Text>
+                                  )
+                                }
+                                </AnimatedCircularProgress>
 
-                          <Text>{item.title}</Text>
-                  </View>
-
+                                <Text>{item.title}</Text>
+                        </View>
 
                       );
                     }}
                     keyExtractor={(item, index) => "graph-" + index}
                   />
 
+            </View>
 
-        </View>
+            <View style={styles.gridContainer}>
+                <Text style={styles.sectionHeader}>DASHBOARD</Text>
+
+                <Grid
+                    style={styles.gridlist}
+                    renderItem={_renderItem}
+                    renderPlaceholder={_renderPlaceholder}
+                    data={['#F2F2F2', '#F2F2F2', '#F2F2F2', '#F2F2F2', '#F2F2F2']}
+                    itemsPerRow={2}
+                  />
+              </View>
+
+
 
       </ScrollView>
     );
@@ -153,6 +171,17 @@ container: {
   }, points: {
     alignItems: 'center',
     fontSize: 30,
-  }
+  }, gridlist: {
+    flex: 1,
+  },
+  griditem: {
+    flex: 1,
+    height: 160,
+    margin: 1
+  },gridContainer: {
+    paddingLeft: 20,
+    backgroundColor: '#fff',
+    // height: 370,
+  },
 
 });
