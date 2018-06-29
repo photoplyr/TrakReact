@@ -1,0 +1,19 @@
+{
+
+    "data": {
+      "stats" : [
+          {
+            "title": "Steps",
+            "value": 233
+          },
+          {
+            "title": "Trak M/mL",
+            "value": 35
+          },
+          {
+            "title": "Heart",
+            "value": 90
+          }
+      ]
+    }
+}

@@ -2,6 +2,7 @@
 
 const todo = require("./todo");
 const users = require("./users");
+const dashboard = require("./dashboard");
 
 export type User = {
     id: string,
@@ -17,11 +18,10 @@ export type Ingredient = {
     quantity: string
 };
 
-
-
 const api: todoList = {
-    todo: todo.recipes,
-     me: (): User => users.filter(user => user.id === "schavez")[0],
+    todo: todo.data,
+    dashboard: dashboard.data.stats,
+    me: (): User => users.filter(user => user.id === "schavez")[0],
 };
 
 export default api;

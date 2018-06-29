@@ -2,7 +2,7 @@ import autobind from "autobind-decorator";
 import * as React from "react";
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import Grid from 'react-native-grid-component';
-import {StyleSheet, View,Text,ScrollView,FlatList} from "react-native";
+import {StyleSheet, View,Text,ScrollView,FlatList,Image} from "react-native";
 
 import {
      List,Header,NavigationProps
@@ -10,6 +10,7 @@ import {
 
 import MockDataAPI from "./api";
 import SocialAPI from "./api";
+import DashboardAPI from "./api";
 
 import Step from "./components/Step.js";
 
@@ -45,7 +46,7 @@ export default class HomeScreen extends React.Component <NavigationProps<>>{
       }
 
   static navigationOptions = {
-    title: 'Your Things',
+    title: 'Todays Tasks',
   };
 
 
@@ -53,6 +54,7 @@ export default class HomeScreen extends React.Component <NavigationProps<>>{
 
     const todolist = MockDataAPI.todo["todo"][0];
     const me = SocialAPI.me();
+    const dashboard = DashboardAPI.data;
 
     console.log(me);
 
@@ -62,26 +64,36 @@ export default class HomeScreen extends React.Component <NavigationProps<>>{
             };
 
     _renderItem = (data, i) => (
-       <View style={[{ backgroundColor: data }, styles.griditem]} key={i} />
+       <View style={[{ backgroundColor: data }, styles.griditem]} key={i} >
+
+       <Image
+          style={{marginTop:20,marginBottom:20,alignItems: 'center', height: '55%',width: '55%'}}
+           source={require('../assets/images/heartbeat.png')}
+        />
+
+        <Text>{'Heart Rate'}</Text>
+
+      </View>
      );
 
     _renderPlaceholder = i => <View style={styles.griditem} key={i} />;
 
     return (
 
+       // Add scroller to view
        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
-       <Header picture={me.cover} heightRatio={.5}>
+       // Add background picture to header
+       <Header picture={me.cover} heightRatio={.75}>
        </Header>
 
+       // Add the action container and text header
         <View style={styles.actionPlanContainer}>
-
             <Text style={styles.sectionHeader}>ACTION PLAN</Text>
-
             <List rows={todolist.instructions} renderRow={(step, i) => <Step index={i + 1} {...{step}} />} />
-
         </View>
 
+        // Load the dashboard elements
         <View style={styles.dashboardContainer}>
             <Text style={styles.sectionHeader}>DASHBOARD</Text>
 
@@ -121,14 +133,14 @@ export default class HomeScreen extends React.Component <NavigationProps<>>{
 
             </View>
 
+              // load the grid elements
             <View style={styles.gridContainer}>
-                <Text style={styles.sectionHeader}>DASHBOARD</Text>
 
                 <Grid
                     style={styles.gridlist}
                     renderItem={_renderItem}
                     renderPlaceholder={_renderPlaceholder}
-                    data={['#F2F2F2', '#F2F2F2', '#F2F2F2', '#F2F2F2', '#F2F2F2']}
+                    data={['#F2F2F2', '#F2F2F2', '#F2F2F2', '#F2F2F2']}
                     itemsPerRow={2}
                   />
               </View>
@@ -175,11 +187,13 @@ container: {
     flex: 1,
   },
   griditem: {
+    alignItems: 'center',
     flex: 1,
     height: 160,
     margin: 1
   },gridContainer: {
-    paddingLeft: 20,
+    margin:10,
+    // paddingLeft: 5,
     backgroundColor: '#fff',
     // height: 370,
   },

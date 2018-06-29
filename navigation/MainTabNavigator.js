@@ -18,8 +18,8 @@ const HomeStack = createStackNavigator({
 
       // header: null,
       headerStyle: {
-         position: 'absolute',
-        backgroundColor: 'transparent',
+        position: 'absolute',
+        backgroundColor: '#425873',
         zIndex: 100, top: 0, left: 0, right: 0
       },
 
