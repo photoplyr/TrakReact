@@ -162,7 +162,6 @@ container: {
     alignItems: 'center',
     marginHorizontal: 50,
   },contentContainer: {
-    // paddingTop: 10,
   }, actionPlanContainer: {
     paddingLeft: 20,
   }, dashboardContainer: {
@@ -193,9 +192,7 @@ container: {
     margin: 1
   },gridContainer: {
     margin:10,
-    // paddingLeft: 5,
     backgroundColor: '#fff',
-    // height: 370,
   },
 
 });

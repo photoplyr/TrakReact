@@ -1,8 +1,9 @@
 // @flow
+import autobind from "autobind-decorator";
 import * as React from "react";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, View, Image} from "react-native";
 
-import {Text, StyleGuide} from "../../components";
+import {Text, StyleGuide,Icon} from "../../components";
 
 type StepProps = {
     index: number,
@@ -15,8 +16,14 @@ export default class Step extends React.PureComponent<StepProps> {
         const {step, index} = this.props;
         return (
             <View style={styles.container}>
-                <Text style={styles.step}>{`${index}`}</Text>
+
+                <Image
+                   style={{height: 25,width: 25,marginRight: StyleGuide.spacing.small}}
+                    source={require('../../assets/images/unchecked.png')}
+                 />
+
                 <Text style={styles.text}>{step}</Text>
+
             </View>
         );
     }
@@ -26,6 +33,10 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         padding: StyleGuide.spacing.small
+    },
+    radio: {
+        paddingHorizontal: StyleGuide.spacing.small,
+        justifyContent: "center",
     },
     step: {
         marginRight: StyleGuide.spacing.small,
