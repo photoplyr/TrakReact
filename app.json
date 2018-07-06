@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Trak",
+    "name": "trak-react",
     "description": "A very interesting project.",
-    "slug": "my-new-project",
+    "slug": "trak-react",
     "privacy": "public",
     "sdkVersion": "28.0.0",
     "platforms": ["ios", "android"],
@@ -22,6 +22,14 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "permissions": [],
+      "splash": {
+        "backgroundColor": "#ffffff"
+      }
     }
   }
 }
+
+//    https://docs.expo.io/versions/v28.0.0/workflow/configuration

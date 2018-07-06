@@ -3,15 +3,6 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
 
-import {useStrict, observable, action} from "mobx";
-import {Provider, observer} from "mobx-react/native";
-import {createTheme} from "./components";
-
-
-const SFProTextBold = require("./fonts/SF-Pro-Text-Bold.otf");
-const SFProTextSemibold = require("./fonts/SF-Pro-Text-Semibold.otf");
-const SFProTextRegular = require("./fonts/SF-Pro-Text-Regular.otf");
-
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
@@ -20,53 +11,37 @@ export default class App extends React.Component {
   render() {
     if (!this.state.isLoadingComplete && !this.props.skipLoadingScreen) {
       return (
-      <AppLoading
+        <AppLoading
           startAsync={this._loadResourcesAsync}
           onError={this._handleLoadingError}
           onFinish={this._handleFinishLoading}
         />
       );
-    }
-    else {
+    } else {
       return (
-        <Provider theme={createTheme()} >
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <AppNavigator />
         </View>
-          </Provider>
       );
     }
   }
 
-  // Load all the image reso
   _loadResourcesAsync = async () => {
     return Promise.all([
-
+      Asset.loadAsync([
+        require('./assets/images/robot-dev.png'),
+        require('./assets/images/robot-prod.png'),
+      ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
         ...Icon.Ionicons.font,
         // We include SpaceMono because we use it in HomeScreen.js. Feel free
         // to remove this if you are not using it in your app
-        "SFProText-Bold": SFProTextBold,
-        "SFProText-Semibold": SFProTextSemibold,
-        "SFProText-Regular": SFProTextRegular,
-        'space-mono': require('./assets/fonts/Roboto-Regular.ttf'),
+        'space-mono': require('./assets/fonts/SpaceMono-Regular.ttf'),
       }),
     ]);
   };
-
-  componentDidMount() {
-         if (Platform.OS === "android") {
-             StatusBar.setHidden(true);
-         }
-     }
-
-     componentWillUnmount() {
-         if (Platform.OS === "android") {
-             StatusBar.setHidden(false);
-         }
-     }
 
   _handleLoadingError = error => {
     // In this case, you might want to report the error to your error
