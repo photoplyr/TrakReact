@@ -4,9 +4,9 @@
  * Time: 12:07 PM
  */
 import {create} from 'apisauce'
+import Auth from './Auth'
 
 export default class ApiService {
-
     api = null;
 
     constructor() {
@@ -17,10 +17,8 @@ export default class ApiService {
         })
     }
 
-    async signIn(email, password, uuid) {
-        const response = await  this.api.post('/signin', {email, password, uuid})
-        console.log(response)
-        return response
+    Auth() {
+        return new Auth(this.api);
     }
 
 }

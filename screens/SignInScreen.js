@@ -6,23 +6,21 @@
 
 import React, {Component} from 'react'
 import {
-    ActivityIndicator,
     AsyncStorage,
-    StatusBar,
     StyleSheet,
     ScrollView,
     View,
     Image,
-    TextInput,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    TouchableOpacity,
+    Text
 } from 'react-native';
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import {Button, Input} from 'react-native-elements'
 import ApiService from '../services/ApiService'
 
 export default class SignInScreen extends Component {
     static navigationOptions = {
-        title: 'Please sign in',
+        title: 'Sign in',
         header: null,
         // header: {visible: false}
     };
@@ -30,23 +28,23 @@ export default class SignInScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'Useless Placeholder ',
+            email: 'skiner.dp@gmail.com',
+            password: '11111111',
             btnSignIn: {
                 isLoading: false,
                 title: 'Sign In'
-            }
+            },
+            errorFirstName: null
         };
     }
 
     render() {
         return (
-            <View style={styles.container}>
-                <KeyboardAvoidingView
-                    keyboardVerticalOffset={178}
-
-                    behavior="padding"
-                >
-
+            <KeyboardAvoidingView
+                behavior="padding"
+                enabled
+                style={{flex: 1}}>
+                <ScrollView style={styles.container}>
 
                     <View style={styles.logo}>
                         <Image
@@ -60,11 +58,25 @@ export default class SignInScreen extends Component {
                         <Input
                             placeholder='Email'
                             containerStyle={styles.input}
+                            value={this.state.email}
+                            onChangeText={(email) => this.setState({email})}
+                            blurOnSubmit={false}
+                            returnKeyType={"next"}
+                            onSubmitEditing={() => {
+                                this.pwdInput.focus();
+                            }}
+                            errorStyle={{color: 'red'}}
+                            errorMessage={this.state.errorFirstName}
                         />
                         <Input
                             placeholder='Password'
                             secureTextEntry={true}
                             containerStyle={styles.input}
+                            value={this.state.password}
+                            onChangeText={(password) => this.setState({password})}
+                            ref={(input) => {
+                                this.pwdInput = input;
+                            }}
                         />
 
 
@@ -76,14 +88,19 @@ export default class SignInScreen extends Component {
                                 loading={this.state.btnSignIn.isLoading}
                                 backgroundColor="#3b98da"
                                 buttonStyle={{
-                                    height: 45
+                                    height: 45,
+                                    margin: 10
                                 }}
                             />
                         </View>
-                    </View>
 
-                </KeyboardAvoidingView>
-            </View>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')} style={styles.signUpLinkContainer}>
+                            <Text style={styles.signUpLinkText}>New here? Sign Up</Text>
+                        </TouchableOpacity>
+
+                    </View>
+                </ScrollView>
+            </KeyboardAvoidingView>
         );
     }
 
@@ -91,23 +108,37 @@ export default class SignInScreen extends Component {
         if (!this.state.btnSignIn.isLoading) {
 
             this.setState({btnSignIn: {isLoading: true}});
-            const resp = await new ApiService().signIn('test@test.com', '12345678', '000')
+            const resp = await new ApiService().Auth().signIn(this.state.email, this.state.password, '000')
 
+            console.log('token: ', resp.data.token);
 
             if (resp.status == 200) {
-                this.setState({btnSignIn: {isLoading: false, title: 'Done'}});
-                alert('OK')
+                // this.setState({btnSignIn: {isLoading: false, title: 'Done'}});
+
+                await AsyncStorage.setItem('userToken', resp.data.token);
+                this.props.navigation.navigate('App');
+
             } else {
                 this.setState({btnSignIn: {isLoading: false, title: 'Sign In'}});
                 alert('Invalid Email or Password.')
             }
-            // await AsyncStorage.setItem('userToken', 'abc');
-            // this.props.navigation.navigate('App');
+
         }
     };
+
+    _handleSignUpLink() {
+
+    }
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        // flexDirection:'row',
+        // alignItems:'center',
+        // justifyContent:'center'
+    },
     logo: {
         alignItems: 'center',
         marginTop: 100,
@@ -117,12 +148,6 @@ const styles = StyleSheet.create({
         resizeMode: Image.resizeMode.contain,
         height: 150
     },
-    container: {
-        flex: 1,
-        // flexDirection:'row',
-        // alignItems:'center',
-        // justifyContent:'center'
-    },
     btnContainer: {
         marginTop: 50
     },
@@ -130,5 +155,13 @@ const styles = StyleSheet.create({
         // borderColor: '#7a42f4',
         // borderWidth: 1,
         width: '100%'
-    }
+    },
+    signUpLinkContainer: {
+        marginTop: 15,
+        alignItems: 'center',
+    },
+    signUpLinkText: {
+        fontSize: 14,
+        color: '#2e78b7',
+    },
 });
