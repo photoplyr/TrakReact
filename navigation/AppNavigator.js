@@ -32,22 +32,28 @@ const AppStack = createStackNavigator({
         screen: DrawerNavigator
     }
 }, {
-    // headerMode: 'float',
-    navigationOptions: ({navigation}) => ({
-        headerStyle: {backgroundColor: '#ffffff'},
-        title: 'Trak',
-        headerTitle: <HeaderTitle/>,
-        // headerTintColor: 'white',
+      navigationOptions: ({navigation}) => ({
+
+      headerStyle: {
+        backgroundColor: '#202E39',
+
+      },
+      headerTintColor: 'white',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        textAlign:"center",
+      },
+      title: 'Trak',
         headerLeft: (
-            <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#000">
+            <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
                 <HeaderButtons.Item title="add" iconName="menu" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
             </HeaderButtons>
-        ),
-        headerRight: (
-            <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#000">
-                <HeaderButtons.Item title="add" iconName="add" onPress={() => alert('Hello')}/>
-            </HeaderButtons>
         )
+        // ,headerRight: (
+        //     <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
+        //         <HeaderButtons.Item title="add" iconName="add" onPress={() => alert('Hello')}/>
+        //     </HeaderButtons>
+        // )
     })
 });
 
