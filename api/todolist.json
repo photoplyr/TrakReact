@@ -1,0 +1,6 @@
+[
+    {"key": "Take risk assessment", checked: true},
+    {"key": "Test sperm", checked: true},
+    {"key": "Take your vitamins", checked: false},
+    {"key": "Schedule doctor appointment", checked: false}
+];

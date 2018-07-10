@@ -16,34 +16,17 @@ import {ListItem} from 'react-native-elements'
 import Grid from 'react-native-grid-component';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
-import Step from '../components/Step'
+import Step from '../components/Step';
+
+var customerStatData = require('../api/statistics.json');
+var customerTODOData = require('../api/todolist.json');
+var customerMenuData = require('../api/menu.json');
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Trak',
         header: null
     };
-
-    data = [
-        {
-            title: "Steps"
-            , value: 233
-        },
-        {
-            title: "Trak M/mL"
-            , value: 35
-        },
-        {
-            title: "Heart"
-            , value: 90
-        }
-    ];
-
-    instructions = [
-        {key: "Take risk assessment", checked: false},
-        {key: "Test sperm", checked: true},
-        {key: "Schedule doctor appointment", checked: false}
-    ];
 
     render() {
         return (
@@ -54,7 +37,7 @@ export default class HomeScreen extends React.Component {
                 <View style={styles.actionPlanContainer}>
                     <Text style={styles.sectionHeader}>ACTION PLAN</Text>
                     <FlatList
-                        data={this.instructions}
+                        data={customerTODOData}
                         renderItem={({item}) => <Step title={item.key} checked={item.checked}/>}
                     />
                 </View>
@@ -65,9 +48,11 @@ export default class HomeScreen extends React.Component {
 
                     <FlatList
                         numColumns={3}
-                        data={this.data}
+                        data={customerStatData}
 
                         showsVerticalScrollIndicator={false}
+                        keyExtractor={(item, index) => "graph-" + index}
+                        // renderItem={this._renderStatsItem}
 
                         renderItem={({item}) => {
                             return (
@@ -93,20 +78,21 @@ export default class HomeScreen extends React.Component {
                                 </View>
 
                             );
-                        }}
-                        keyExtractor={(item, index) => "graph-" + index}
+                        }
+                      }
+
                     />
 
                 </View>
 
-                {/*// load the grid elements*/}
+
                 <View style={styles.gridContainer}>
 
                     <Grid
                         style={styles.gridlist}
-                        renderItem={this._renderItem}
+                        renderItem={this._renderAppsItem}
                         renderPlaceholder={this._renderPlaceholder}
-                        data={['#F2F2F2', '#F2F2F2', '#F2F2F2', '#F2F2F2']}
+                        data={customerMenuData}
                         itemsPerRow={2}
                     />
                 </View>
@@ -117,15 +103,41 @@ export default class HomeScreen extends React.Component {
 
     }
 
-    _renderItem = (data, i) => (
-        <View style={[{backgroundColor: data}, styles.griditem]} key={i}>
+    _renderStatsItem = (item, i) => (
+
+      <View style={styles.listContainer}>
+                  <AnimatedCircularProgress
+                      size={100}
+                      width={15}
+                      fill={isNaN(item.value) ? 0 : item.value}
+                      tintColor="#00e0ff"
+                      onAnimationComplete={() => console.log('onAnimationComplete')}
+                      backgroundColor="#3d5875">
+                      {
+                          (fill) => (
+                              <Text style={styles.points}>
+                                  {item.value}
+                              </Text>
+                          )
+                      }
+                  </AnimatedCircularProgress>
+
+                  <Text>{item.title}</Text>
+              </View>
+
+    );
+
+
+    _renderAppsItem = (data, i) => (
+
+        <View style={[{backgroundColor: data.background}, styles.griditem]} key={i}>
 
             <Image
                 style={{marginTop: 20, marginBottom: 20, alignItems: 'center', height: '55%', width: '55%'}}
-                source={require('../assets/images/heartbeat.png')}
+                source = {{uri: data.imageUrl}}
             />
 
-            <Text>{'Heart Rate'}</Text>
+            <Text>{data.title}</Text>
 
         </View>
     );
