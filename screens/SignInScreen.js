@@ -78,7 +78,6 @@ export default class SignInScreen extends Component {
                             }}
                         />
 
-
                         <View style={styles.btnContainer}>
                             <Button
                                 title={this.state.btnSignIn.title}
