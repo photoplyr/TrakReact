@@ -20,23 +20,37 @@ HomeStack.navigationOptions = {
             focused={focused}
             name={
                 Platform.OS === 'ios'
-                    ? `ios-information-circle${focused ? '' : '-outline'}`
-                    : 'md-information-circle'
+                    ? `ios-person${focused ? '' : '-outline'}`
+                    : 'md-person'
             }
         />
     ),
 };
 
-const LinksStack = createStackNavigator({
+const CommunityStack = createStackNavigator({
     Links: LinksScreen,
 });
 
-LinksStack.navigationOptions = {
-    tabBarLabel: 'Links',
+CommunityStack.navigationOptions = {
+    tabBarLabel: 'Community',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+            name={Platform.OS === 'ios' ? `ios-people${focused ? '' : '-outline'}` : 'md-people'}
+        />
+    ),
+};
+
+const ExpertsStack = createStackNavigator({
+    Links: LinksScreen,
+});
+
+ExpertsStack.navigationOptions = {
+    tabBarLabel: 'Experts',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? `ios-chatbubbles${focused ? '' : '-outline'}` : 'md-chatbubbles'}
         />
     ),
 };
@@ -57,6 +71,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
     HomeStack,
-    LinksStack,
+    CommunityStack,
+    ExpertsStack,
     SettingsStack,
 });
