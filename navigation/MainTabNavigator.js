@@ -4,7 +4,8 @@ import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import ExpertScreen from '../screens/ExpertScreen';
+import CommunityScreen from '../screens/CommunityScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import TestScreen from '../screens/TestScreen'
 
@@ -20,23 +21,37 @@ HomeStack.navigationOptions = {
             focused={focused}
             name={
                 Platform.OS === 'ios'
-                    ? `ios-information-circle${focused ? '' : '-outline'}`
-                    : 'md-information-circle'
+                    ? `ios-person${focused ? '' : '-outline'}`
+                    : 'md-person'
             }
         />
     ),
 };
 
-const LinksStack = createStackNavigator({
-    Links: LinksScreen,
+const CommunityStack = createStackNavigator({
+    Community: CommunityScreen,
 });
 
-LinksStack.navigationOptions = {
-    tabBarLabel: 'Links',
+CommunityStack.navigationOptions = {
+    tabBarLabel: 'Community',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+            name={Platform.OS === 'ios' ? `ios-people${focused ? '' : '-outline'}` : 'md-people'}
+        />
+    ),
+};
+
+const ExpertsStack = createStackNavigator({
+    Expert: ExpertScreen,
+});
+
+ExpertsStack.navigationOptions = {
+    tabBarLabel: 'Experts',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? `ios-chatbubbles${focused ? '' : '-outline'}` : 'md-chatbubbles'}
         />
     ),
 };
@@ -57,6 +72,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
     HomeStack,
-    LinksStack,
+    CommunityStack,
+    ExpertsStack,
     SettingsStack,
 });

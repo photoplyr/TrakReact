@@ -52,7 +52,6 @@ export default class SignInScreen extends Component {
                             style={styles.logoImg}/>
                     </View>
 
-
                     <View style={{paddingLeft: 16, paddingRight: 16, width: '100%'}}>
 
                         <Input
@@ -78,7 +77,6 @@ export default class SignInScreen extends Component {
                                 this.pwdInput = input;
                             }}
                         />
-
 
                         <View style={styles.btnContainer}>
                             <Button
