@@ -22,6 +22,7 @@ import Step from '../components/Step'
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Trak',
+        header: null
     };
 
     data = [
