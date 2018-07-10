@@ -1,0 +1,16 @@
+// @flow
+import type {Picture, Location} from "../../components/Model";
+
+const statistics = require("./statistics");
+
+export type Statistics  = {
+  stats: Statistic[]
+}
+
+export type Statistic  = {
+  titile:string,
+  value:number
+}
+
+
+export default api;
