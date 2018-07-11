@@ -86,6 +86,9 @@ export default class HomeScreen extends React.Component {
                 </View>
 
 
+
+              <Text style={styles.headerContainer}>TRAK APPS</Text>
+
                 <View style={styles.gridContainer}>
 
                     <Grid
@@ -97,7 +100,6 @@ export default class HomeScreen extends React.Component {
                     />
                 </View>
 
-                <Button title="Log Out" onPress={async () => await this._logOut()}/>
             </ScrollView>
         )
 
@@ -162,6 +164,12 @@ const styles = StyleSheet.create({
         marginHorizontal: 50,
     }, contentContainer: {}, actionPlanContainer: {
         paddingLeft: 20,
+    }, headerContainer: {
+        paddingLeft: 20,
+          paddingTop: 10,
+        backgroundColor: '#fff',
+        fontSize: 24,
+        color: "#E08944",
     }, dashboardContainer: {
         paddingLeft: 20,
         backgroundColor: '#fff',
