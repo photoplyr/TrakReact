@@ -47,6 +47,7 @@ export default class HomeScreen extends React.Component {
                     <Text style={styles.sectionHeader}>DASHBOARD</Text>
 
                     <FlatList
+                        scrollEnabled={false}
                         numColumns={3}
                         data={customerStatData}
 
@@ -56,7 +57,6 @@ export default class HomeScreen extends React.Component {
 
                         renderItem={({item}) => {
                             return (
-
                                 <View style={styles.listContainer}>
                                     <AnimatedCircularProgress
                                         size={100}
@@ -183,7 +183,8 @@ const styles = StyleSheet.create({
     }, listContainer: {
         padding: 5,
         backgroundColor: '#fff',
-        height: 170,
+        // height: 170,
+        flex:1,
         alignItems: 'center',
     }, points: {
         alignItems: 'center',

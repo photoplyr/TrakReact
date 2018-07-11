@@ -47,14 +47,16 @@ class DrawerScreen extends Component {
                         <Touchable
                             style={styles.option}
                             background={Touchable.Ripple('#ccc', false)}
-                            onPress={() => this.props.navigation.dispatch(DrawerActions.closeDrawer())}>
+                            onPress={() => {
+                                this.props.navigation.dispatch(DrawerActions.closeDrawer());
+                            }}>
                             <View style={{flexDirection: 'row', alignItems: "center",}}>
                                 <View style={styles.optionIconContainer}>
                                     <Icon name="ios-chatbubbles-outline" size={30} color="#900" style={{marginTop: 1}}/>
                                 </View>
                                 <View style={styles.optionTextContainer}>
                                     <Text style={styles.optionText}>
-                                        Item 2
+                                        Enter Trak Result
                                     </Text>
                                 </View>
                             </View>

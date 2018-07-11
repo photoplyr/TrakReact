@@ -8,7 +8,6 @@ import SignUpScreen from '../screens/SignUpScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import DrawerScreen from '../components/DrawerScreen';
 import HeaderTitle from '../components/HeaderTitle';
-
 import HeaderButtons from 'react-navigation-header-buttons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -18,9 +17,7 @@ const AuthStack = createStackNavigator({
 });
 
 const DrawerNavigator = createDrawerNavigator({
-    Main: {
-        screen: MainTabNavigator
-    }
+    Main: MainTabNavigator,
 }, {
     initialRouteName: 'Main',
     contentComponent: DrawerScreen,
@@ -32,21 +29,21 @@ const AppStack = createStackNavigator({
         screen: DrawerNavigator
     }
 }, {
-      navigationOptions: ({navigation}) => ({
+    navigationOptions: ({navigation}) => ({
+        headerStyle: {
+            backgroundColor: '#202E39',
 
-      headerStyle: {
-        backgroundColor: '#202E39',
-
-      },
-      headerTintColor: 'white',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        textAlign:"center",
-      },
-      title: 'Trak',
+        },
+        headerTintColor: 'white',
+        headerTitleStyle: {
+            fontWeight: 'bold',
+            textAlign: "center",
+        },
+        title: 'Trak',
         headerLeft: (
             <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
-                <HeaderButtons.Item title="add" iconName="menu" onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
+                <HeaderButtons.Item title="add" iconName="menu"
+                                    onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
             </HeaderButtons>
         )
         // ,headerRight: (
@@ -67,4 +64,5 @@ export default createSwitchNavigator({
     },
     {
         initialRouteName: 'AuthLoading',
-    });
+    }
+);
