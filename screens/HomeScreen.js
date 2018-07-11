@@ -22,6 +22,8 @@ var customerStatData = require('../api/statistics.json');
 var customerTODOData = require('../api/todolist.json');
 var customerMenuData = require('../api/menu.json');
 
+var styles = require('../assets/style/style.js');
+
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
         title: 'Trak',
@@ -34,8 +36,10 @@ export default class HomeScreen extends React.Component {
             <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
 
                 {/*// Add the action container and text header*/}
+
+                  <Text style={styles.headerContainer}>ACTION PLAN</Text>
+
                 <View style={styles.actionPlanContainer}>
-                    <Text style={styles.sectionHeader}>ACTION PLAN</Text>
                     <FlatList
                         data={customerTODOData}
                         renderItem={({item}) => <Step title={item.key} checked={item.checked}/>}
@@ -43,8 +47,11 @@ export default class HomeScreen extends React.Component {
                 </View>
 
                 {/*// Load the dashboard elements*/}
-                <View style={styles.dashboardContainer}>
-                    <Text style={styles.sectionHeader}>DASHBOARD</Text>
+
+                <Text style={styles.headerContainer}>DASHBOARD</Text>
+
+
+                <View style={styles.graphContainer}>
 
                     <FlatList
                         scrollEnabled={false}
@@ -139,7 +146,7 @@ export default class HomeScreen extends React.Component {
                 source = {{uri: data.imageUrl}}
             />
 
-            <Text>{data.title}</Text>
+            <Text style={styles.gridText}>{data.title}</Text>
 
         </View>
     );
@@ -152,54 +159,3 @@ export default class HomeScreen extends React.Component {
     }
 
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingTop: 0,
-        backgroundColor: '#fff',
-    }, getStartedContainer: {
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        alignItems: 'center',
-        marginHorizontal: 50,
-    }, contentContainer: {}, actionPlanContainer: {
-        paddingLeft: 20,
-    }, headerContainer: {
-        paddingLeft: 20,
-          paddingTop: 10,
-        backgroundColor: '#fff',
-        fontSize: 24,
-        color: "#E08944",
-    }, dashboardContainer: {
-        paddingLeft: 20,
-        backgroundColor: '#fff',
-        height: 170,
-    }, sectionHeader: {
-        paddingTop: 15,
-        fontSize: 24,
-        color: "#E08944",
-    }, headerHeader: {
-        backgroundColor: '#fff',
-    }, listContainer: {
-        padding: 5,
-        backgroundColor: '#fff',
-        // height: 170,
-        flex:1,
-        alignItems: 'center',
-    }, points: {
-        alignItems: 'center',
-        fontSize: 30,
-    }, gridlist: {
-        flex: 1,
-    },
-    griditem: {
-        alignItems: 'center',
-        flex: 1,
-        height: 160,
-        margin: 1
-    }, gridContainer: {
-        margin: 10,
-        backgroundColor: '#fff',
-    },
-
-});
