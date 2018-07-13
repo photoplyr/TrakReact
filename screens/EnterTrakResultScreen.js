@@ -5,7 +5,8 @@
  */
 
 import React, {Component} from 'react';
-import {ScrollView, Text, View, Button, PanResponder, Animated} from 'react-native';
+import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions} from 'react-native';
+import {Button, Input} from 'react-native-elements';
 import HeaderButtons from 'react-navigation-header-buttons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -19,49 +20,39 @@ export default class EnterTrakResultScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            moveCount: 0
+            barHeight: 0,
+            prevHeight: 0
         };
 
         this.panResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            // onPanResponderMove: Animated.event([null, {
-            //     dx: this.state.pan.x,
-            //     dy: this.state.pan.y
-            // }]),
-            onPanResponderMove: (evt, gestureState) => {
-                console.log('x: ', gestureState);
 
-                if (Math.abs(gestureState.dx) < 10) {
-                    if (gestureState.dy < 0) {
-                        this.setState((prev) => (
-                            {moveCount: ++prev.moveCount}
-                        ))
-                    } else {
-                        this.setState((prev) => (
-                            {moveCount: --prev.moveCount}
-                        ))
-                    }
+            onPanResponderMove: (evt, gestureState) => {
+                const h = this.state.prevHeight + gestureState.dy * -1;
+
+                if (h < 0) {
+                    this.setState({barHeight: 0, prevHeight: 0});
+                }
+                if (h > 492) {
+                    this.setState({barHeight: 463, prevHeight: 463});
                 }
 
+                if (h >= 0 && h <= 463) {
+                    this.setState((prev) => (
+                        {barHeight: h}
+                    ));
+                }
 
-                // console.log('y: ',this.state.pan.y);
-                // The most recent move distance is gestureState.move{X,Y}
-
-                // The accumulated gesture distance since becoming responder is
-                // gestureState.d{x,y}
             },
-            // onPanResponderRelease: (e, gesture) => {
-            //     // if (this.isDropZone(gesture)) {
-            //     //     this.setState({
-            //     //         showDraggable: false
-            //     //     });
-            //     // } else {
-            //     //     Animated.spring(
-            //     //         this.state.pan,
-            //     //         {toValue: {x: 0, y: 0}}
-            //     //     ).start();
-            //     // }
-            // }
+            onPanResponderGrant: (evt, gestureState) => {
+                // console.log('Grant gestureState: ', gestureState);
+            },
+            onPanResponderRelease: (e, gestureState) => {
+                // console.log('Release gesture: ', gestureState);
+                this.setState(
+                    {prevHeight: this.state.barHeight}
+                );
+            }
         });
     }
 
@@ -71,11 +62,101 @@ export default class EnterTrakResultScreen extends Component {
         // const _name = navigation.getParam('name', 'no-name');
 
         return (
-            <View {...this.panResponder.panHandlers} style={{flex: 1, backgroundColor: '#05ff72'}}>
+            <View {...this.panResponder.panHandlers} style={{flex: 1, backgroundColor: '#ffffff'}}>
 
-                <Text>move count: {this.state.moveCount}</Text>
+                <Text>move count: {this.state.barHeight}</Text>
+
+                <View style={styles.barContainer}>
+                    <View style={styles.barBgBlackSmall}/>
+                    <View style={styles.barBgBlackBig}/>
+                    <View style={styles.bar} height={this.state.barHeight}/>
+                    <Image source={require('../assets/images/trak_bar/prop_top_compressed.png')}
+                           style={styles.barTop}/>
+                    <Image source={require('../assets/images/trak_bar/prop_center_compressed.png')}
+                           style={styles.barCenter}/>
+                    <Image source={require('../assets/images/trak_bar/prop_bottom_compressed.png')}
+                           style={styles.barBottom}/>
+                </View>
+
+                <Text style={styles.bottomText}>Drag the graphic or tap the arrows to fill the channel to the level that
+                    matches your Trak
+                    result.</Text>
+
+                <Button
+                    title="OK"
+                    onPress={() => {
+                        alert('OK')
+                    }}
+
+                    backgroundColor="#3b98da"
+                    buttonStyle={{
+                        // position: 'absolute',
+                        // bottom: 0,
+
+                        height: 45,
+                        marginTop: 15,
+                        marginLeft: 15,
+                        marginRight: 15
+                        // left: 15,
+                        // right: 15
+                    }}
+                />
 
             </View>
         )
     }
 }
+let Window = Dimensions.get('window');
+const barWidth = 170;
+const styles = StyleSheet.create({
+    bar: {
+        position: 'absolute',
+        backgroundColor: '#ffffff',
+        height: 1,
+        width: barWidth - 2,
+        bottom: 0,
+        left: Window.width / 2 - ((barWidth - 2) / 2),
+    },
+    barContainer: {
+        // flex: 1,
+        // backgroundColor: '#fffe03',
+        marginTop: 10,
+        alignItems: 'center',
+    },
+    barTop: {
+        resizeMode: Image.resizeMode.stretch,
+        width: barWidth,
+        height: 70,
+        // backgroundColor: '#fffe03',
+    },
+    barCenter: {
+        resizeMode: Image.resizeMode.stretch,
+        width: barWidth,
+        height: 370
+    },
+    barBottom: {
+        resizeMode: Image.resizeMode.stretch,
+        width: barWidth,
+        height: 24
+    },
+    barBgBlackBig: {
+        width: 100,
+        height: 460,
+        backgroundColor: "#000",
+        position: "absolute"
+    },
+    barBgBlackSmall: {
+        width: barWidth,
+        height: 400,
+        backgroundColor: "#000",
+        position: "absolute"
+    },
+    bottomText: {
+        marginTop: 10,
+        marginLeft: 16,
+        marginRight: 16,
+        fontSize: 16,
+        textAlign: 'center'
+
+    }
+});
