@@ -12,7 +12,8 @@ import {DrawerActions} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Touchable from 'react-native-platform-touchable';
 
-var mainStyles = require('../assets/style/style.js');
+import mainStyles from '../assets/style/style';
+import mainProps from '../assets/style/prop';
 
 class DrawerScreen extends Component {
     static navigateToScreen = (route) => () => {
@@ -79,9 +80,9 @@ class DrawerScreen extends Component {
                         }}>
                         <View style={{flexDirection: 'row', alignItems: "center",}}>
                             <View style={styles.optionIconContainer}>
-                                <Icon name="ios-log-out" size={mainStyles.props.drawerMenuIcon.size}
-                                      color={mainStyles.props.drawerMenuIcon.color}
-                                      style={mainStyles.styles.drawerMenuIcon}/>
+                                <Icon name="ios-log-out" size={mainProps.drawerMenuIcon.size}
+                                      color={mainProps.drawerMenuIcon.color}
+                                      style={mainStyles.drawerMenuIcon}/>
                             </View>
                             <View style={styles.optionTextContainer}>
                                 <Text style={styles.optionText}>

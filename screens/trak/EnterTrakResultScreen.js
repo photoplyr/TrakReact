@@ -7,8 +7,8 @@
 import React, {Component} from 'react';
 import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions} from 'react-native';
 import {Button, Input} from 'react-native-elements';
-import HeaderButtons from 'react-navigation-header-buttons'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+// import HeaderButtons from 'react-navigation-header-buttons'
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const maxBarHeight = 367;
 

@@ -7,7 +7,7 @@ var {
 } = React;
 
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 0,
@@ -63,15 +63,3 @@ const styles = StyleSheet.create({
         marginTop: 1
     }
 });
-
-const props = {
-    drawerMenuIcon: {
-        size: 30,
-        color: '#000000'
-    }
-};
-
-module.exports = {
-    styles,
-    props
-}
