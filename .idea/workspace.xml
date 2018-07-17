@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f54c35a-c131-4af8-b288-273e877bef58" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/images/trak_bar/trak_bar.svg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/assets/style/prop.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/components/TrakPropGraphic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locales/en.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locales/es.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/locales/i18n.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screens/EnterTrakResultScreen.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/icon.png" afterPath="$PROJECT_DIR$/assets/images/icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/images/splash.png" afterPath="$PROJECT_DIR$/assets/images/splash.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/style/style.js" afterPath="$PROJECT_DIR$/assets/style/style.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/components/DrawerScreen.js" afterPath="$PROJECT_DIR$/components/DrawerScreen.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/statistics.json" afterPath="$PROJECT_DIR$/api/statistics.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screens/HomeScreen.js" afterPath="$PROJECT_DIR$/screens/HomeScreen.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js" afterPath="$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screens/trak/MainScreen.js" afterPath="$PROJECT_DIR$/screens/trak/MainScreen.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,11 +40,19 @@
       <file leaf-file-name="HomeScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="24" column="47" lean-forward="true" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="292">
+              <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -72,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/navigation/MainTabNavigator.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -84,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/screens/trak/MainScreen.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="399">
-              <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+              <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
               <folding>
                 <element signature="e#73#99#0" expanded="true" />
               </folding>
@@ -92,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrawerScreen.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DrawerScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/DrawerScreen.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -106,7 +115,7 @@
         <entry file="file://$PROJECT_DIR$/components/TrakPropGraphic.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+              <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
               <folding>
                 <element signature="e#73#99#0" expanded="true" />
               </folding>
@@ -119,16 +128,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
               <caret line="7" column="12" lean-forward="false" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StyledText.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/StyledText.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -212,11 +211,11 @@
         <option value="$PROJECT_DIR$/assets/style/style.js" />
         <option value="$PROJECT_DIR$/assets/style/prop.js" />
         <option value="$PROJECT_DIR$/components/DrawerScreen.js" />
-        <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
         <option value="$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/screens/trak/MainScreen.js" />
         <option value="$PROJECT_DIR$/components/TrakPropGraphic.js" />
+        <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
+        <option value="$PROJECT_DIR$/package.json" />
       </list>
     </option>
   </component>
@@ -374,12 +373,12 @@
       <workItem from="1531381563585" duration="57000" />
       <workItem from="1531473808750" duration="6670000" />
       <workItem from="1531815647529" duration="15635000" />
-      <workItem from="1531852565826" duration="229000" />
+      <workItem from="1531852565826" duration="319000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72688000" />
+    <option name="totallyTimeSpent" value="72778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -613,14 +612,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/images/trak_bar/trak_prop_graphic.svg" />
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/Step.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -698,7 +689,7 @@
     <entry file="file://$PROJECT_DIR$/screens/trak/MainScreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
-          <caret line="23" column="53" lean-forward="true" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
           <folding>
             <element signature="e#73#99#0" expanded="true" />
           </folding>
@@ -719,7 +710,7 @@
     <entry file="file://$PROJECT_DIR$/components/TrakPropGraphic.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <caret line="21" column="1" lean-forward="false" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
             <element signature="e#73#99#0" expanded="true" />
           </folding>
@@ -729,17 +720,7 @@
     <entry file="file://$PROJECT_DIR$/navigation/MainTabNavigator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="24" column="47" lean-forward="true" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+          <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
@@ -766,6 +747,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="47" lean-forward="false" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="44" lean-forward="false" selection-start-line="20" selection-start-column="44" selection-end-line="20" selection-end-column="44" />
           <folding />
         </state>
       </provider>
