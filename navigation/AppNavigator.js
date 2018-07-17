@@ -7,6 +7,7 @@ import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import DrawerScreen from '../components/DrawerScreen';
+
 import HeaderTitle from '../components/HeaderTitle';
 import HeaderButtons from 'react-navigation-header-buttons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';

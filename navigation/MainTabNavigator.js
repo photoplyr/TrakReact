@@ -6,14 +6,17 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ExpertScreen from '../screens/ExpertScreen';
 import CommunityScreen from '../screens/CommunityScreen';
+import MainTrakScreen from '../screens/trak/MainScreen';
+import EnterTrakResultScreen from '../screens/trak/EnterTrakResultScreen';
 // import SettingsScreen from '../screens/SettingsScreen';
-import TabTrakScreen from '../screens/TabTrakScreen';
+
 import TestScreen from '../screens/TestScreen'
-import EnterTrakResultScreen from '../screens/EnterTrakResultScreen'
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
-    Test: TestScreen
+    Test: TestScreen,
+    MainTrak: MainTrakScreen,
+    EnterTrakResultScreen: EnterTrakResultScreen
 });
 
 HomeStack.navigationOptions = {
@@ -69,20 +72,20 @@ ExpertsStack.transitionConfig = () => {
     }
 }
 
-const TabTrakStack = createStackNavigator({
-    TrakTab: TabTrakScreen,
-    EnterTrakResultScreen: EnterTrakResultScreen
-});
-
-TabTrakStack.navigationOptions = {
-    tabBarLabel: 'Trak',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-color-wand${focused ? '' : '-outline'}` : 'md-color-wand'}
-        />
-    ),
-};
+// const TabTrakStack = createStackNavigator({
+//     TrakTab: TabTrakScreen,
+//     EnterTrakResultScreen: EnterTrakResultScreen
+// });
+//
+// TabTrakStack.navigationOptions = {
+//     tabBarLabel: 'Trak',
+//     tabBarIcon: ({focused}) => (
+//         <TabBarIcon
+//             focused={focused}
+//             name={Platform.OS === 'ios' ? `ios-color-wand${focused ? '' : '-outline'}` : 'md-color-wand'}
+//         />
+//     ),
+// };
 
 // const SettingsStack = createStackNavigator({
 //     Settings: SettingsScreen,
@@ -102,5 +105,5 @@ export default createBottomTabNavigator({
     HomeStack,
     CommunityStack,
     ExpertsStack,
-    TabTrakStack,
+    // TabTrakStack,
 });

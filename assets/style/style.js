@@ -3,11 +3,11 @@
 var React = require('react-native');
 
 var {
-  StyleSheet,
+    StyleSheet,
 } = React;
 
 
-module.exports = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingTop: 0,
@@ -20,7 +20,7 @@ module.exports = StyleSheet.create({
         paddingLeft: 20,
     }, headerContainer: {
         paddingLeft: 20,
-          paddingTop: 10,
+        paddingTop: 10,
         backgroundColor: '#fff',
         fontSize: 24,
         color: "#E08944",
@@ -41,7 +41,7 @@ module.exports = StyleSheet.create({
         padding: 5,
         backgroundColor: '#fff',
         // height: 170,
-        flex:1,
+        flex: 1,
         alignItems: 'center',
     }, points: {
         alignItems: 'center',
@@ -54,11 +54,24 @@ module.exports = StyleSheet.create({
     }, griditem: {
         alignItems: 'center',
         flex: 1,
-        height: 160,
-        margin: 1
+        height: 160
     }, gridContainer: {
         margin: 10,
         backgroundColor: '#fff',
     },
-
+    drawerMenuIcon: {
+        marginTop: 1
+    }
 });
+
+const props = {
+    drawerMenuIcon: {
+        size: 30,
+        color: '#000000'
+    }
+};
+
+module.exports = {
+    styles,
+    props
+}
