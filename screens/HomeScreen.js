@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import {
     AsyncStorage,
@@ -12,9 +14,12 @@ import {
     FlatList
 } from 'react-native';
 
+
 import {ListItem} from 'react-native-elements'
 import Grid from 'react-native-grid-component';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
+
+import { strings } from '../locales/i18n.js';
 
 import Step from '../components/Step';
 
@@ -37,7 +42,7 @@ export default class HomeScreen extends React.Component {
 
                 {/*// Add the action container and text header*/}
 
-                  <Text style={styles.headerContainer}>ACTION PLAN</Text>
+                  <Text style={styles.headerContainer}>{strings('home.header.action_plan')}</Text>
 
                 <View style={styles.actionPlanContainer}>
                     <FlatList
@@ -48,13 +53,12 @@ export default class HomeScreen extends React.Component {
 
                 {/*// Load the dashboard elements*/}
 
-                <Text style={styles.headerContainer}>DASHBOARD</Text>
-
+                <Text style={styles.headerContainer}>{strings('home.header.dashboard')}</Text>
 
                 <View style={styles.graphContainer}>
 
                     <FlatList
-                        scrollEnabled={false}
+                        scrollEnabled={true}
                         numColumns={3}
                         data={customerStatData}
 
@@ -93,8 +97,7 @@ export default class HomeScreen extends React.Component {
                 </View>
 
 
-
-              <Text style={styles.headerContainer}>TRAK APPS</Text>
+              <Text style={styles.headerContainer}>{strings('home.header.trak_apps')}</Text>
 
                 <View style={styles.gridContainer}>
 

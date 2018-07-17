@@ -1,5 +1,9 @@
 [
         {
+            "title": "Points"
+            , "value": 100
+        },
+        {
             "title": "Steps"
             , "value": 122
         },
