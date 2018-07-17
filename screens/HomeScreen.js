@@ -43,7 +43,7 @@ export default class HomeScreen extends React.Component {
 
                 {/*// Add the action container and text header*/}
 
-                  <Text style={styles.headerContainer}>{strings('home.header.action_plan')}</Text>
+                  <Text style={mainStyles.headerContainer}>{strings('home.header.action_plan')}</Text>
 
                 <View style={mainStyles.actionPlanContainer}>
                     <FlatList
@@ -54,7 +54,7 @@ export default class HomeScreen extends React.Component {
 
                 {/*// Load the dashboard elements*/}
 
-                <Text style={styles.headerContainer}>{strings('home.header.dashboard')}</Text>
+                <Text style={mainStyles.headerContainer}>{strings('home.header.dashboard')}</Text>
 
                 <View style={mainStyles.graphContainer}>
 
@@ -97,7 +97,7 @@ export default class HomeScreen extends React.Component {
                 </View>
 
 
-              <Text style={styles.headerContainer}>{strings('home.header.trak_apps')}</Text>
+              <Text style={mainStyles.headerContainer}>{strings('home.header.trak_apps')}</Text>
 
                 <View style={mainStyles.gridContainer}>
                     <Grid
