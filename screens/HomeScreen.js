@@ -18,13 +18,10 @@ import {
 import {ListItem} from 'react-native-elements'
 import Grid from 'react-native-grid-component';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
-<<<<<<< HEAD
 
 import { strings } from '../locales/i18n.js';
 
-=======
 import Touchable from 'react-native-platform-touchable';
->>>>>>> 8be3b52423de2b141e4f15bfb6b12a26bf29d540
 import Step from '../components/Step';
 
 var customerStatData = require('../api/statistics.json');
@@ -46,11 +43,7 @@ export default class HomeScreen extends React.Component {
 
                 {/*// Add the action container and text header*/}
 
-<<<<<<< HEAD
                   <Text style={styles.headerContainer}>{strings('home.header.action_plan')}</Text>
-=======
-                <Text style={styles.headerContainer}>ACTION PLAN</Text>
->>>>>>> 8be3b52423de2b141e4f15bfb6b12a26bf29d540
 
                 <View style={styles.actionPlanContainer}>
                     <FlatList
@@ -104,11 +97,7 @@ export default class HomeScreen extends React.Component {
                 </View>
 
 
-<<<<<<< HEAD
               <Text style={styles.headerContainer}>{strings('home.header.trak_apps')}</Text>
-=======
-                <Text style={styles.headerContainer}>TRAK APPS</Text>
->>>>>>> 8be3b52423de2b141e4f15bfb6b12a26bf29d540
 
                 <View style={styles.gridContainer}>
                     <Grid
