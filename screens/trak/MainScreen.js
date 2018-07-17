@@ -8,7 +8,7 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Button, Input} from 'react-native-elements'
 
-export default class TabTrakScreen extends React.Component {
+export default class TrakScreen extends React.Component {
     static navigationOptions = {
         title: 'Trak',
         header: null
