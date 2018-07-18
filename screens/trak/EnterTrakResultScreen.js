@@ -5,8 +5,10 @@
  */
 
 import React, {Component} from 'react';
-import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions} from 'react-native';
+import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions, AsyncStorage} from 'react-native';
 import {Button, Input} from 'react-native-elements';
+import moment from 'moment-timezone';
+
 // import HeaderButtons from 'react-navigation-header-buttons'
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -18,6 +20,10 @@ export default class EnterTrakResultScreen extends Component {
         header: null,
     });
 
+    componentWillUnmount() {
+        const {params} = this.props.navigation.state;
+        params.callUpdate();
+    }
 
     constructor(props) {
         super(props);
@@ -68,7 +74,7 @@ export default class EnterTrakResultScreen extends Component {
         return (
             <View {...this.panResponder.panHandlers} style={{flex: 1, backgroundColor: '#ffffff'}}>
 
-                <Text>move count: {this.state.barHeight} Value: {this.state.barValue}</Text>
+                {/*<Text>move count: {this.state.barHeight} Value: {this.state.barValue}</Text>*/}
 
                 <View style={styles.barContainer}>
                     <View style={styles.barBgBlackSmall}/>
@@ -95,9 +101,7 @@ export default class EnterTrakResultScreen extends Component {
 
                     <Button
                         title="OK"
-                        onPress={() => {
-                            alert('OK')
-                        }}
+                        onPress={this._add}
 
                         backgroundColor="#3b98da"
                         buttonStyle={{
@@ -110,6 +114,21 @@ export default class EnterTrakResultScreen extends Component {
                 </View>
             </View>
         )
+    }
+
+    _add = async () => {
+        const listRaw = await AsyncStorage.getItem('trak_result');
+        const list = listRaw == null ? [] : JSON.parse(listRaw);
+
+        list.push({
+            key: new Date().getTime().toString(),
+            date: moment().format(),
+            result: 'test',
+            value: this.state.barValue
+        });
+
+        await AsyncStorage.setItem('trak_result', JSON.stringify(list));
+        this.props.navigation.goBack();
     }
 
     _barUp = async () => {
@@ -142,8 +161,8 @@ export default class EnterTrakResultScreen extends Component {
 
     _calculateValue = () => {
         const h = this.state.barHeight;
-        const value = h / 2.5;
-        console.log(`H: ${h} value: ${value}`);
+        const value = Math.round(h / 2.5);
+        // console.log(`H: ${h} value: ${value}`);
         this.setState(
             {barValue: value}
         );
@@ -152,7 +171,7 @@ export default class EnterTrakResultScreen extends Component {
 
 
 let Window = Dimensions.get('window');
-const barWidth = 170;
+const barWidth = 160;
 const styles = StyleSheet.create({
     bar: {
         position: 'absolute',

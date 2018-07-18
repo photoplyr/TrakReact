@@ -9,12 +9,24 @@ import {View, StyleSheet} from 'react-native';
 import SvgUri from 'react-native-svg-uri';
 
 export default class TrakPropGraphic extends React.Component {
+    constructor(props) {
+        super(props);
+
+        // this.state = {
+        //     progress: props.progress
+        // }
+    }
+
     render() {
+        const {progress} = this.props;
+
+        console.log('progress: ',progress);
+
         return (
             <View style={{}}>
 
                 <SvgUri source={require('../assets/images/trak_bar/trak_bar.svg')}/>
-                <View style={styles.bar}/>
+                <View  height={`${progress}%`} style={styles.bar}/>
 
             </View>
         );
@@ -28,6 +40,6 @@ const styles = StyleSheet.create({
         right: '14.8%',
         backgroundColor: '#fff',
         width: 20,
-        height: '50%'
+        opacity: 0.9
     }
 })

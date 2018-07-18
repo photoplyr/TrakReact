@@ -1,9 +1,9 @@
 {
-   "home": {
-      "header": {
-          "action_plan":"ACTION PLAN",
-          "dashboard":"DASHBOARD",
-          "trak_apps":"TRAK APPS"
-      }
+  "home": {
+    "header": {
+      "action_plan": "ACTION PLAN",
+      "dashboard": "DASHBOARD",
+      "trak_apps": "TRAK APPS"
     }
+  }
 }
