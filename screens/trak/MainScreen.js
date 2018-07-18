@@ -5,11 +5,12 @@
  */
 
 import React from 'react';
-import {Text, View, StyleSheet, FlatList, AsyncStorage} from 'react-native';
+import {Text, View, StyleSheet, FlatList, AsyncStorage,  mainStylesheet} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import _ from 'lodash';
 import TrakPropGraphic from '../../components/TrakPropGraphic';
 import TrakResultListItem from '../../components/TrakResultListItem';
+import mainStyles from '../../assets/style/style';
 
 export default class TrakScreen extends React.Component {
     static navigationOptions = {
@@ -61,13 +62,17 @@ export default class TrakScreen extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text style={{textAlign: 'center'}}>TRAK RESULT</Text>
+            <Text style={mainStyles.headerContainer}>INDICATOR</Text>
+
 
                 <View style={{alignItems: 'center'}}>
                     <TrakPropGraphic progress={this.state.progress} height={250} style={{height: 250}}/>
                 </View>
 
-                <FlatList
+
+                <Text style={mainStyles.headerContainer}>RESULTS</Text>
+
+                <FlatList style={styles.resultContainer}
                     data={this.state.resultList}
                     renderItem={({item}) => <TrakResultListItem key={item.key} _key={item.key} date={item.date}
                                                                 result={item.result}
@@ -113,7 +118,11 @@ export default class TrakScreen extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff'
+        backgroundColor: '#fff',
+          margin: 10,
+    },
+    resultContainer: {
+        backgroundColor: '#FDFDFD'
     },
     btnContainer: {
         // position: 'absolute',
