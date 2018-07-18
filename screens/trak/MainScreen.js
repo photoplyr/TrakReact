@@ -104,9 +104,11 @@ export default class TrakScreen extends React.Component {
         _.reverse(list);
 
         let avgValue = 0;
+
         for (const item of list) {
             avgValue += item.value;
         }
+
         avgValue = avgValue / _.size(list);
 
         this.setState({progress: avgValue});

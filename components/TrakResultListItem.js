@@ -35,8 +35,10 @@ export default class TrakResultListItem extends React.PureComponent {
 
         return (
             <View style={styles.container}>
-                <Text style={styles.date}>{moment(date).format('DD.MM.YYYY')}</Text>
-                <View style={{flex: 0, flexDirection: 'row', alignItems: 'center'}}>
+                <Text style={styles.date}>{moment(date).format('YYYY.MM.DD')}</Text>
+                {<Text style={styles.value}>{value}M/mL</Text>}
+
+            <View style={{flex: 0, flexDirection: 'row', alignItems: 'center'}}>
                     <View style={{
                         position: 'absolute',
                         borderRadius: 10,
@@ -46,10 +48,9 @@ export default class TrakResultListItem extends React.PureComponent {
                     }}/>
                     <Text style={styles.result}>{_result}</Text>
                 </View>
-                {/*<Text style={styles.value}>{value}</Text>*/}
                 <TouchableOpacity
                 onPress={()=>onPressRemoveItem(_key)}>
-                    <Icon name="ios-close" size={30}
+                    <Icon name="ios-close" size={25}
                           color={mainProps.drawerMenuIcon.color}
                           style={{}}/>
                 </TouchableOpacity>
@@ -76,21 +77,21 @@ const styles = StyleSheet.create({
     result: {
         width: 90,
         marginLeft: 20,
-        fontSize: 16,
+        fontSize: 14,
         color: '#404040'
     },
     date: {
-        fontSize: 16,
+        fontSize: 14,
         width: 100,
         color: '#404040'
     },
     text: {
-        fontSize: 16,
+        fontSize: 14,
         color: '#404040'
     },
     value: {
-        width: 35,
-        fontSize: 16,
+        width: 65,
+        fontSize: 14,
         color: '#404040'
     }
 });

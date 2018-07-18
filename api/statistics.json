@@ -14,5 +14,13 @@
         {
             "title": "Heart"
             , "value": 90
+        },
+        {
+            "title": "Questions"
+            , "value": 45
+        },
+        {
+            "title": "Actions"
+            , "value": 68
         }
 ];
