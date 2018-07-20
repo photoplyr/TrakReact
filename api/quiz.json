@@ -1,0 +1,103 @@
+[
+  {
+    "id": 1,
+    "type_id": 1,
+    "title": "Radio Test Question",
+    "question": "Eye color?",
+    "customer_id": 0,
+    "required": 0,
+    "active": 1,
+    "type": {
+      "id": 1,
+      "title": "Radio"
+    },
+    "responses": [
+      {
+        "id": 1,
+        "quiz_id": 1,
+        "priority": 0,
+        "title": "a) brown"
+      },
+      {
+        "id": 2,
+        "quiz_id": 1,
+        "priority": 1,
+        "title": "b) blue"
+      },
+      {
+        "id": 3,
+        "quiz_id": 1,
+        "priority": 2,
+        "title": "c) green"
+      },
+      {
+        "id": 4,
+        "quiz_id": 1,
+        "priority": 3,
+        "title": "d) other"
+      }
+    ],
+    "customer": null
+  },
+  {
+    "id": 2,
+    "type_id": 2,
+    "title": "Checkbox Test Quiz",
+    "question": "Which countries you have visit for last year?",
+    "customer_id": 0,
+    "required": 0,
+    "active": 1,
+    "type": {
+      "id": 2,
+      "title": "Checkbox"
+    },
+    "responses": [
+      {
+        "id": 5,
+        "quiz_id": 2,
+        "priority": 0,
+        "title": "Australia"
+      },
+      {
+        "id": 6,
+        "quiz_id": 2,
+        "priority": 1,
+        "title": "India"
+      },
+      {
+        "id": 7,
+        "quiz_id": 2,
+        "priority": 2,
+        "title": "USA"
+      },
+      {
+        "id": 8,
+        "quiz_id": 2,
+        "priority": 3,
+        "title": "China"
+      },
+      {
+        "id": 9,
+        "quiz_id": 2,
+        "priority": 4,
+        "title": "Brazil"
+      }
+    ],
+    "customer": null
+  },
+  {
+    "id": 3,
+    "type_id": 3,
+    "title": "Input Test Quiz",
+    "question": "Please tell us more about your problem",
+    "customer_id": 0,
+    "required": 0,
+    "active": 1,
+    "type": {
+      "id": 3,
+      "title": "Input"
+    },
+    "responses": [],
+    "customer": null
+  }
+]

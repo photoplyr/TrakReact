@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import ExpertScreen from '../screens/ExpertScreen';
 import CommunityScreen from '../screens/CommunityScreen';
+import QuizScreen from '../screens/QuizScreen';
 import MainTrakScreen from '../screens/trak/MainScreen';
 import EnterTrakResultScreen from '../screens/trak/EnterTrakResultScreen';
 // import SettingsScreen from '../screens/SettingsScreen';
@@ -29,6 +30,20 @@ HomeStack.navigationOptions = {
                     ? `ios-person${focused ? '' : '-outline'}`
                     : 'md-person'
             }
+        />
+    ),
+};
+
+const QuizStack = createStackNavigator({
+    Quiz: QuizScreen,
+});
+
+QuizStack.navigationOptions = {
+    tabBarLabel: 'Quiz',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-people'}
         />
     ),
 };
@@ -103,6 +118,7 @@ ExpertsStack.transitionConfig = () => {
 
 export default createBottomTabNavigator({
     HomeStack,
+    QuizStack,
     CommunityStack,
     ExpertsStack,
     // TabTrakStack,
