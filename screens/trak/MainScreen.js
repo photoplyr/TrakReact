@@ -66,7 +66,7 @@ export default class TrakScreen extends React.Component {
 
 
                 <View style={{alignItems: 'center'}}>
-                    <TrakPropGraphic progress={this.state.progress} height={250} style={{height: 250}}/>
+                    <TrakPropGraphic progress={this.state.progress} height={150} style={{height: 150}}/>
                 </View>
 
 
