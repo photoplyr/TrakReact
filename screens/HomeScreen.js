@@ -168,7 +168,9 @@ export default class HomeScreen extends React.Component {
         switch (key) {
             case 'trak':
                 this.props.navigation.navigate('MainTrak');
-
+                break;
+            default:
+                this.props.navigation.navigate('TestScreen');
                 break;
         }
     }

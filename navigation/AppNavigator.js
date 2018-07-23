@@ -11,14 +11,16 @@ import DrawerScreen from '../components/DrawerScreen';
 import HeaderTitle from '../components/HeaderTitle';
 import HeaderButtons from 'react-navigation-header-buttons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import TestScreen from '../screens/TestScreen'
 
 const AuthStack = createStackNavigator({
     SignIn: SignInScreen,
     SignUp: SignUpScreen
 });
 
+
 const DrawerNavigator = createDrawerNavigator({
-    Main: MainTabNavigator,
+    Main: MainTabNavigator
 }, {
     initialRouteName: 'Main',
     contentComponent: DrawerScreen,
@@ -26,34 +28,40 @@ const DrawerNavigator = createDrawerNavigator({
 });
 
 const AppStack = createStackNavigator({
-    DrawerNavigator: {
-        screen: DrawerNavigator
-    }
-}, {
-    navigationOptions: ({navigation}) => ({
-        headerStyle: {
-            backgroundColor: '#202E39',
+        DrawerNavigator: {
+            screen: DrawerNavigator
+        },
+        TestScreen: {
+            screen: TestScreen
+        },
+    }, {
+        navigationOptions: ({navigation}) => {
+            return {
+                headerStyle: {
+                    backgroundColor: '#202E39',
+                },
+                headerTintColor: 'white',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    textAlign: "center",
+                },
+                title: 'Trak',
+                headerLeft: (
+                    <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
+                        <HeaderButtons.Item title="add" iconName="menu"
+                                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
+                    </HeaderButtons>
+                )
 
-        },
-        headerTintColor: 'white',
-        headerTitleStyle: {
-            fontWeight: 'bold',
-            textAlign: "center",
-        },
-        title: 'Trak',
-        headerLeft: (
-            <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
-                <HeaderButtons.Item title="add" iconName="menu"
-                                    onPress={() => navigation.dispatch(DrawerActions.openDrawer())}/>
-            </HeaderButtons>
-        )
-        // ,headerRight: (
-        //     <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
-        //         <HeaderButtons.Item title="add" iconName="add" onPress={() => alert('Hello')}/>
-        //     </HeaderButtons>
-        // )
-    })
-});
+                // ,headerRight: (
+                //     <HeaderButtons IconComponent={MaterialIcons} iconSize={25} color="#fff">
+                //         <HeaderButtons.Item title="add" iconName="add" onPress={() => alert('Hello')}/>
+                //     </HeaderButtons>
+                // )
+            }
+        }
+    }
+);
 
 
 export default createSwitchNavigator({

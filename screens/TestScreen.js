@@ -6,16 +6,28 @@
 
 import React, {Component} from 'react';
 import {ScrollView, Text, View, Button} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import HeaderButtons from 'react-navigation-header-buttons'
 
 export default class TestScreen extends Component {
-    static navigationOptions = {
-        title: 'Test Screen',
-        headerRight: (
-            <Button
-                onPress={() => alert('This is a button!')}
-                title="Info!"
-            />
-        )
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'TEST',
+            headerLeft: (
+                <HeaderButtons IconComponent={Icon} iconSize={25} color="#fff">
+                    <HeaderButtons.Item title="Back" iconName="ios-arrow-back"
+                                        onPress={navigation.getParam('goBack')}/>
+                </HeaderButtons>
+            )
+        }
+    };
+
+    componentDidMount() {
+        this.props.navigation.setParams({goBack: this._goBack});
+    }
+
+    _goBack = () => {
+        this.props.navigation.goBack();
     };
 
     render() {
@@ -27,7 +39,7 @@ export default class TestScreen extends Component {
             <View>
                 <Text>Hello {_name}. Your ID: {_itemId}</Text>
 
-                <Button title="Click me again!" onPress={()=>this.props.navigation.push('Test')}/>
+                <Button title="Click me again!" onPress={() => this._goBack()}/>
 
             </View>
         )

@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import {Text, View, StyleSheet, FlatList, AsyncStorage,  mainStylesheet} from 'react-native';
+import {Text, View, StyleSheet, FlatList, AsyncStorage, mainStylesheet} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import _ from 'lodash';
 import TrakPropGraphic from '../../components/TrakPropGraphic';
@@ -13,10 +13,15 @@ import TrakResultListItem from '../../components/TrakResultListItem';
 import mainStyles from '../../assets/style/style';
 
 export default class TrakScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Trak',
-        header: null
+
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'Trak',
+            header: null
+        };
     };
+
+    isWillUnmound = false;
 
     constructor(props) {
         super(props);
@@ -31,14 +36,14 @@ export default class TrakScreen extends React.Component {
         this._loadTrakResultList();
     }
 
-    // componentDidUpdate(){
-    //     console.log('componentDidMount');
-    //     this._loadTrakResultList();
-    // }
+    componentWillUnmount() {
+        this.isWillUnmound = true;
+    }
 
     callUpdate() {
-        console.log('call update');
-        this._loadTrakResultList();
+        if (!this.isWillUnmound) {
+            this._loadTrakResultList();
+        }
     }
 
     callRemoveItem = async (key) => {
@@ -60,9 +65,11 @@ export default class TrakScreen extends React.Component {
     };
 
     render() {
+        console.log(this.props.route);
+
         return (
             <View style={styles.container}>
-            <Text style={mainStyles.headerContainer}>INDICATOR</Text>
+                <Text style={mainStyles.headerContainer}>INDICATOR</Text>
 
 
                 <View style={{alignItems: 'center'}}>
@@ -73,11 +80,11 @@ export default class TrakScreen extends React.Component {
                 <Text style={mainStyles.headerContainer}>RESULTS</Text>
 
                 <FlatList style={styles.resultContainer}
-                    data={this.state.resultList}
-                    renderItem={({item}) => <TrakResultListItem key={item.key} _key={item.key} date={item.date}
-                                                                result={item.result}
-                                                                value={item.value}
-                                                                onPressRemoveItem={this.callRemoveItem.bind(this)}/>}
+                          data={this.state.resultList}
+                          renderItem={({item}) => <TrakResultListItem key={item.key} _key={item.key} date={item.date}
+                                                                      result={item.result}
+                                                                      value={item.value}
+                                                                      onPressRemoveItem={this.callRemoveItem.bind(this)}/>}
                 />
 
                 <View style={styles.btnContainer}>
@@ -88,9 +95,12 @@ export default class TrakScreen extends React.Component {
                         }}
 
                         backgroundColor="#3b98da"
+                        // containerStyle={{
+                        //     flex: 1
+                        // }}
                         buttonStyle={{
                             height: 45,
-                            margin: 10
+                            margin: 10,
                         }}
                     />
                 </View>
@@ -104,11 +114,9 @@ export default class TrakScreen extends React.Component {
         _.reverse(list);
 
         let avgValue = 0;
-
         for (const item of list) {
             avgValue += item.value;
         }
-
         avgValue = avgValue / _.size(list);
 
         this.setState({progress: avgValue});
@@ -121,15 +129,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
-          margin: 10,
+        margin: 10,
     },
     resultContainer: {
         backgroundColor: '#FDFDFD'
     },
-    btnContainer: {
-        // position: 'absolute',
-        // bottom: 0,
-        // left: 0,
-        // right: 0,
-    }
+    btnContainer: {}
 })

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Platform} from 'react-native';
-import {createStackNavigator, createBottomTabNavigator} from 'react-navigation';
+import {DrawerActions, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
@@ -10,12 +10,12 @@ import QuizScreen from '../screens/QuizScreen';
 import MainTrakScreen from '../screens/trak/MainScreen';
 import EnterTrakResultScreen from '../screens/trak/EnterTrakResultScreen';
 // import SettingsScreen from '../screens/SettingsScreen';
-
-import TestScreen from '../screens/TestScreen'
+// import TestScreen from '../screens/TestScreen'
+import HeaderButtons from 'react-navigation-header-buttons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
-    Test: TestScreen,
     MainTrak: MainTrakScreen,
     EnterTrakResultScreen: EnterTrakResultScreen
 });
@@ -115,6 +115,7 @@ ExpertsStack.transitionConfig = () => {
 //         />
 //     ),
 // };
+
 
 export default createBottomTabNavigator({
     HomeStack,

@@ -17,18 +17,14 @@ export default class TrakPropGraphic extends React.Component {
         this.state = {
             dimensions: {width: 0, height: 0}
         };
-        console.log('width: ', (this.width ));
     }
 
     render() {
         const {progress} = this.props;
-
-        console.log('progress: ', progress);
-
         return (
             <View onLayout={this.onLayout}>
                 <SvgUri height={250} source={require('../assets/images/trak_bar/trak_bar.svg')}/>
-                <View left={(this.state.dimensions.width/2)+15} height={`${progress}%`} style={styles.bar}/>
+                <View left={(this.state.dimensions.width / 2) + 15} height={`${progress}%`} style={styles.bar}/>
             </View>
         );
     }
@@ -37,7 +33,6 @@ export default class TrakPropGraphic extends React.Component {
         // if (this.state.dimensions) return // layout was already called
         let {width, height} = event.nativeEvent.layout;
         this.setState({dimensions: {width, height}});
-        console.log('---------', event.nativeEvent.layout);
     }
 }
 
