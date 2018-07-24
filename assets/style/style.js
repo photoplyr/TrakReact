@@ -54,7 +54,7 @@ export default StyleSheet.create({
     }, griditem: {
         alignItems: 'center',
         flex: 1,
-        height: 160
+          height: 160
     }, gridContainer: {
         margin: 10,
         backgroundColor: '#fff',
@@ -62,4 +62,18 @@ export default StyleSheet.create({
     drawerMenuIcon: {
         marginTop: 1
     }
+    ,rowDelete: {
+  		alignItems: 'center',
+  		backgroundColor: 'red',
+  		flex: 1,
+  		flexDirection: 'row',
+  		justifyContent: 'space-between',
+
+	}, rowDeleteItem: {
+    	 paddingLeft: 280,
+        textAlign: "right",
+        color: "#fff",
+  }
+
+
 });

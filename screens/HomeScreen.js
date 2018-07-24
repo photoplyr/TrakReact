@@ -11,18 +11,17 @@ import {
     TouchableOpacity,
     View,
     Button,
-    FlatList
+    FlatList,
 } from 'react-native';
-
 
 import {ListItem} from 'react-native-elements'
 import Grid from 'react-native-grid-component';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
-import { strings } from '../locales/i18n.js';
-
 import Touchable from 'react-native-platform-touchable';
 import Step from '../components/Step';
+
+import { SwipeListView } from 'react-native-swipe-list-view';
 
 var customerStatData = require('../api/statistics.json');
 var customerTODOData = require('../api/todolist.json');
@@ -36,6 +35,13 @@ export default class HomeScreen extends React.Component {
         header: null
     };
 
+
+    closeRow(rowMap, rowKey) {
+    		if (rowMap[rowKey]) {
+    			rowMap[rowKey].closeRow();
+    		}
+    	}
+
     render() {
         return (
             // Add scroller to view
@@ -43,18 +49,42 @@ export default class HomeScreen extends React.Component {
 
                 {/*// Add the action container and text header*/}
 
-                  <Text style={mainStyles.headerContainer}>{strings('home.header.action_plan')}</Text>
+                  <Text style={mainStyles.headerContainer}>ACTION PLAN</Text>
 
                 <View style={mainStyles.actionPlanContainer}>
-                    <FlatList
+                    <SwipeListView
+                        useFlatList={true}
                         data={customerTODOData}
+
                         renderItem={({item}) => <Step title={item.key} checked={item.checked}/>}
+
+                        renderHiddenItem={ (rowData, rowMap) => (
+
+                            <View style={mainStyles.rowDelete}>
+                                <TouchableOpacity onPress={ _ => rowMap[rowData.item.key].closeRow() }>
+                                    <Text style={mainStyles.rowDeleteItem}>Delete</Text>
+                                </TouchableOpacity>
+                            </View>
+
+                        )}
+
+                       rightOpenValue={-75}
+                        disableRightSwipe={true}
+
+                        onRowOpen={(rowKey, rowMap) => {
+                            setTimeout(() => {
+                                rowMap[rowKey].closeRow()
+                            }, 2000)
+                        }}
+
+                        // previewRowKey={this.state.customerTODOData[0].key}
+
                     />
                 </View>
 
                 {/*// Load the dashboard elements*/}
 
-                <Text style={mainStyles.headerContainer}>{strings('home.header.dashboard')}</Text>
+                <Text style={mainStyles.headerContainer}>DASHBOARD</Text>
 
                 <View style={mainStyles.graphContainer}>
 
@@ -97,7 +127,7 @@ export default class HomeScreen extends React.Component {
                 </View>
 
 
-              <Text style={mainStyles.headerContainer}>{strings('home.header.trak_apps')}</Text>
+              <Text style={mainStyles.headerContainer}>TRAK APPS</Text>
 
                 <View style={mainStyles.gridContainer}>
                     <Grid

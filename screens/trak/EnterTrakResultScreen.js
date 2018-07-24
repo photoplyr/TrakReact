@@ -72,6 +72,7 @@ export default class EnterTrakResultScreen extends Component {
         // const _name = navigation.getParam('name', 'no-name');
 
         return (
+          <View style={styles.container}>
             <View {...this.panResponder.panHandlers} style={{flex: 1, backgroundColor: '#ffffff'}}>
 
                 {/*<Text>move count: {this.state.barHeight} Value: {this.state.barValue}</Text>*/}
@@ -113,6 +114,7 @@ export default class EnterTrakResultScreen extends Component {
                     />
                 </View>
             </View>
+                </View>
         )
     }
 
@@ -219,8 +221,8 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 16,
         marginRight: 16,
-        fontSize: 16,
-        textAlign: 'center'
+        fontSize: 14,
+        textAlign: 'justify'
     },
     bottomContainer: {
         position: 'absolute',
@@ -248,5 +250,10 @@ const styles = StyleSheet.create({
     },
     btnTitleControl: {
         fontSize: 25
-    }
+    } ,
+     container: {
+          flex: 1,
+          backgroundColor: '#fff',
+            margin: 10,
+      },
 });
