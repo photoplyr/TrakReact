@@ -12,6 +12,7 @@ import HeaderTitle from '../components/HeaderTitle';
 import HeaderButtons from 'react-navigation-header-buttons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import TestScreen from '../screens/TestScreen'
+import EnterTrakResultScreen from '../screens/trak/EnterTrakResultScreen';
 
 const AuthStack = createStackNavigator({
     SignIn: SignInScreen,
@@ -27,13 +28,13 @@ const DrawerNavigator = createDrawerNavigator({
     drawerWidth: 300
 });
 
+
 const AppStack = createStackNavigator({
         DrawerNavigator: {
             screen: DrawerNavigator
         },
-        TestScreen: {
-            screen: TestScreen
-        },
+        TestScreen: TestScreen,
+        EnterTrakResultScreen: EnterTrakResultScreen
     }, {
         navigationOptions: ({navigation}) => {
             return {

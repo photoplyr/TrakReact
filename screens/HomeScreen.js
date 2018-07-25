@@ -198,7 +198,10 @@ export default class HomeScreen extends React.Component {
     _pressAppItem(key) {
         switch (key) {
             case 'trak':
-                this.props.navigation.navigate('MainTrak');
+                this.props.navigation.navigate('TrakScreen');
+                break;
+            case 'steps':
+                this.props.navigation.navigate('StepsScreen');
                 break;
             default:
                 this.props.navigation.navigate('TestScreen');

@@ -65,8 +65,6 @@ export default class TrakScreen extends React.Component {
     };
 
     render() {
-        console.log(this.props.route);
-
         return (
             <View style={styles.container}>
                 <Text style={mainStyles.headerContainer}>INDICATOR</Text>
