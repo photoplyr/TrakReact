@@ -9,6 +9,7 @@ import {
     mainStylesheet,
     Text,
     TouchableOpacity,
+  	TouchableHighlight,
     View,
     Button,
     FlatList,
