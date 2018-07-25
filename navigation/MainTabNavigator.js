@@ -8,16 +8,17 @@ import ExpertScreen from '../screens/ExpertScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import QuizScreen from '../screens/QuizScreen';
 import MainTrakScreen from '../screens/trak/MainScreen';
-import EnterTrakResultScreen from '../screens/trak/EnterTrakResultScreen';
+import StepsScreen from '../screens/StepsScreen';
+
 // import SettingsScreen from '../screens/SettingsScreen';
 // import TestScreen from '../screens/TestScreen'
-import HeaderButtons from 'react-navigation-header-buttons'
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+// import HeaderButtons from 'react-navigation-header-buttons'
+// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const HomeStack = createStackNavigator({
     Home: HomeScreen,
-    MainTrak: MainTrakScreen,
-    EnterTrakResultScreen: EnterTrakResultScreen
+    TrakScreen: MainTrakScreen,
+    StepsScreen: StepsScreen
 });
 
 HomeStack.navigationOptions = {

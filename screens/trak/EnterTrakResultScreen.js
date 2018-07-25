@@ -9,20 +9,32 @@ import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions, Asy
 import {Button, Input} from 'react-native-elements';
 import moment from 'moment-timezone';
 
+import BaseScreen from '../BaseScreen'
+import HeaderBackButton from '../../components/HeaderBackButton';
+
 // import HeaderButtons from 'react-navigation-header-buttons'
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const maxBarHeight = 367;
 
-export default class EnterTrakResultScreen extends Component {
-    static navigationOptions = ({navigation}) => ({
-        title: 'Enter Trak Result',
-        header: null,
-    });
+export default class EnterTrakResultScreen extends BaseScreen {
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'Enter Trak Result',
+            headerLeft: (
+                <HeaderBackButton navigation={navigation}/>
+            )
+        }
+    };
 
     componentWillUnmount() {
         const {params} = this.props.navigation.state;
         params.callUpdate();
+    }
+
+    componentDidMount() {
+        super.componentDidMount();
+        console.log('componentDidMount..');
     }
 
     constructor(props) {
@@ -72,49 +84,52 @@ export default class EnterTrakResultScreen extends Component {
         // const _name = navigation.getParam('name', 'no-name');
 
         return (
-          <View style={styles.container}>
-            <View {...this.panResponder.panHandlers} style={{flex: 1, backgroundColor: '#ffffff'}}>
+            <View style={styles.container}>
+                <View {...this.panResponder.panHandlers} style={{flex: 1, backgroundColor: '#ffffff'}}>
 
-                {/*<Text>move count: {this.state.barHeight} Value: {this.state.barValue}</Text>*/}
+                    {/*<Text>move count: {this.state.barHeight} Value: {this.state.barValue}</Text>*/}
 
-                <View style={styles.barContainer}>
-                    <View style={styles.barBgBlackSmall}/>
-                    <View style={styles.barBgBlackBig}/>
-                    <View style={styles.bar} height={this.state.barHeight}/>
-                    <Image source={require('../../assets/images/trak_bar/prop_top_compressed.png')}
-                           style={styles.barTop}/>
-                    <Image source={require('../../assets/images/trak_bar/prop_center_compressed.png')}
-                           style={styles.barCenter}/>
-                    <Image source={require('../../assets/images/trak_bar/prop_bottom_compressed.png')}
-                           style={styles.barBottom}/>
-                </View>
+                    <View style={styles.barContainer}>
+                        <View style={styles.barBgBlackSmall}/>
+                        <View style={styles.barBgBlackBig}/>
+                        <View style={styles.bar} height={this.state.barHeight}/>
+                        <Image source={require('../../assets/images/trak_bar/prop_top_compressed.png')}
+                               style={styles.barTop}/>
+                        <Image source={require('../../assets/images/trak_bar/prop_center_compressed.png')}
+                               style={styles.barCenter}/>
+                        <Image source={require('../../assets/images/trak_bar/prop_bottom_compressed.png')}
+                               style={styles.barBottom}/>
+                    </View>
 
-                <View style={styles.btnControlContainer}>
-                    <Button onPress={this._barUp} titleStyle={styles.btnTitleControl} buttonStyle={styles.btnControl}
-                            title="+"/>
-                    <Button onPress={this._barDown} titleStyle={styles.btnTitleControl} buttonStyle={styles.btnControl}
-                            title="-"/>
-                </View>
+                    <View style={styles.btnControlContainer}>
+                        <Button onPress={this._barUp} titleStyle={styles.btnTitleControl}
+                                buttonStyle={styles.btnControl}
+                                title="+"/>
+                        <Button onPress={this._barDown} titleStyle={styles.btnTitleControl}
+                                buttonStyle={styles.btnControl}
+                                title="-"/>
+                    </View>
 
-                <View style={styles.bottomContainer}>
-                    <Text style={styles.bottomText}>Drag the graphic or tap the arrows to fill the channel to the level
-                        that matches your Trak result.</Text>
+                    <View style={styles.bottomContainer}>
+                        <Text style={styles.bottomText}>Drag the graphic or tap the arrows to fill the channel to the
+                            level
+                            that matches your Trak result.</Text>
 
-                    <Button
-                        title="OK"
-                        onPress={this._add}
+                        <Button
+                            title="OK"
+                            onPress={this._add}
 
-                        backgroundColor="#3b98da"
-                        buttonStyle={{
-                            height: 45,
-                            marginTop: 15,
-                            marginLeft: 15,
-                            marginRight: 15
-                        }}
-                    />
+                            backgroundColor="#3b98da"
+                            buttonStyle={{
+                                height: 45,
+                                marginTop: 15,
+                                marginLeft: 15,
+                                marginRight: 15
+                            }}
+                        />
+                    </View>
                 </View>
             </View>
-                </View>
         )
     }
 
@@ -250,10 +265,10 @@ const styles = StyleSheet.create({
     },
     btnTitleControl: {
         fontSize: 25
-    } ,
-     container: {
-          flex: 1,
-          backgroundColor: '#fff',
-            margin: 10,
-      },
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        margin: 10,
+    },
 });

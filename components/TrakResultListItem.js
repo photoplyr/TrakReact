@@ -18,27 +18,25 @@ export default class TrakResultListItem extends React.PureComponent {
         const {_key, date, result, value, onPressRemoveItem} = this.props;
         let _result = '';
         let _color = '#ffe43c';
-        if(value > 15 && value < 56){
+        if (value > 15 && value < 56) {
             _result = 'Moderate';
             _color = '#ffe43c';
         }
-        if(value < 15){
+        if (value < 15) {
             _result = 'Low';
             _color = '#d23e36';
         }
-        if(value > 55){
+        if (value > 55) {
             _result = 'Optimal';
             _color = '#a8ca50';
         }
-
-        console.log('key:', _key);
 
         return (
             <View style={styles.container}>
                 <Text style={styles.date}>{moment(date).format('YYYY.MM.DD')}</Text>
                 {<Text style={styles.value}>{value}M/mL</Text>}
 
-            <View style={{flex: 0, flexDirection: 'row', alignItems: 'center'}}>
+                <View style={{flex: 0, flexDirection: 'row', alignItems: 'center'}}>
                     <View style={{
                         position: 'absolute',
                         borderRadius: 10,
@@ -49,7 +47,7 @@ export default class TrakResultListItem extends React.PureComponent {
                     <Text style={styles.result}>{_result}</Text>
                 </View>
                 <TouchableOpacity
-                onPress={()=>onPressRemoveItem(_key)}>
+                    onPress={() => onPressRemoveItem(_key)}>
                     <Icon name="ios-close" size={25}
                           color={mainProps.drawerMenuIcon.color}
                           style={{}}/>
