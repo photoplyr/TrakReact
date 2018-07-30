@@ -12,7 +12,6 @@ import {Button, Input} from 'react-native-elements';
 import moment from 'moment-timezone';
 import BaseScreen from '../BaseScreen'
 import HeaderBackButton from '../../components/HeaderBackButton';
-import NumberPicker from '../../components/numberpicker';
 
 
 export default class EnterTrakResultScreen extends BaseScreen {
@@ -48,15 +47,7 @@ export default class EnterTrakResultScreen extends BaseScreen {
                         <Text style={styles.title}>Enter sperm concentration in million cells per milliliter
                             (M/mL)</Text>
 
-                        <NumberPicker
-                            height={150}
-                            values={[1, 2, 3, 4, 5]}
-                            // selected={2}
-                            selectedIndex={2}
-                            onSelect={(value) => {
-                                console.log('onSelect', value);
-                            }}
-                        />
+
 
                     </View>
 

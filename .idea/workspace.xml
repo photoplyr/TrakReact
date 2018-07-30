@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f54c35a-c131-4af8-b288-273e877bef58" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/navigation/AppNavigator.js" afterPath="$PROJECT_DIR$/navigation/AppNavigator.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/navigation/MainTabNavigator.js" afterPath="$PROJECT_DIR$/navigation/MainTabNavigator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screens/StepsScreen.js" afterPath="$PROJECT_DIR$/screens/StepsScreen.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screens/trak/MainScreen.js" afterPath="$PROJECT_DIR$/screens/trak/MainScreen.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js" afterPath="$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +22,8 @@
       <file leaf-file-name="EnterTrakResultScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="27" selection-end-column="6" />
+            <state relative-caret-position="195">
+              <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
               <folding>
                 <element signature="e#73#112#0" expanded="true" />
               </folding>
@@ -33,23 +34,13 @@
       <file leaf-file-name="MainScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/trak/MainScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1659">
-              <caret line="89" column="46" lean-forward="false" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
+            <state relative-caret-position="442">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="34" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="e#73#99#0" expanded="true" />
-                <marker date="1532585413130" expanded="true" signature="3560:3656" ph="..." />
+                <marker date="1532975443296" expanded="true" signature="3769:3865" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DrawerScreen.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/DrawerScreen.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1806">
-              <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="22" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -57,8 +48,8 @@
       <file leaf-file-name="SemenAnalysisScreen.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="54" column="43" lean-forward="false" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+            <state relative-caret-position="28">
+              <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="27" selection-end-column="21" />
               <folding>
                 <element signature="e#73#112#0" expanded="true" />
               </folding>
@@ -66,24 +57,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
+      <file leaf-file-name="TestScreen.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/screens/TestScreen.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+            <state relative-caret-position="315">
+              <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.android.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/react-native-numberpicker/index.android.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1344">
-              <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -91,10 +70,20 @@
       <file leaf-file-name="AppNavigator.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/navigation/AppNavigator.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
+            <state relative-caret-position="254">
+              <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StepsScreen.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/screens/StepsScreen.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#73#112#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,7 +158,6 @@
         <option value="$PROJECT_DIR$/screens/SettingsScreen.js" />
         <option value="$PROJECT_DIR$/screens/LinksScreen.js" />
         <option value="$PROJECT_DIR$/screens/CommunityScreen.js" />
-        <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/screens/TrakTabScreen.js" />
         <option value="$PROJECT_DIR$/screens/TabTrakScreen.js" />
         <option value="$PROJECT_DIR$/screens/EnterTrakResultScreen.js" />
@@ -191,17 +179,18 @@
         <option value="$PROJECT_DIR$/screens/ExpertScreen.js" />
         <option value="$PROJECT_DIR$/screens/ScreenComponent.js" />
         <option value="$PROJECT_DIR$/screens/TestScreen.js" />
-        <option value="$PROJECT_DIR$/navigation/MainTabNavigator.js" />
         <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
-        <option value="$PROJECT_DIR$/screens/StepsScreen.js" />
         <option value="$PROJECT_DIR$/screens/BaseScreen.js" />
         <option value="$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js" />
         <option value="$PROJECT_DIR$/components/TrakResultListItem.js" />
-        <option value="$PROJECT_DIR$/navigation/AppNavigator.js" />
-        <option value="$PROJECT_DIR$/screens/trak/MainScreen.js" />
-        <option value="$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js" />
         <option value="$PROJECT_DIR$/components/numberpicker/index.android.js" />
         <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js" />
+        <option value="$PROJECT_DIR$/app.json" />
+        <option value="$PROJECT_DIR$/navigation/MainTabNavigator.js" />
+        <option value="$PROJECT_DIR$/navigation/AppNavigator.js" />
+        <option value="$PROJECT_DIR$/screens/trak/MainScreen.js" />
+        <option value="$PROJECT_DIR$/screens/StepsScreen.js" />
       </list>
     </option>
   </component>
@@ -358,12 +347,12 @@
       <workItem from="1532357865589" duration="540000" />
       <workItem from="1532495471542" duration="3266000" />
       <workItem from="1532583078939" duration="3155000" />
-      <workItem from="1532974155474" duration="76000" />
+      <workItem from="1532974155474" duration="987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102516000" />
+    <option name="totallyTimeSpent" value="103427000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -403,14 +392,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/react-native-svg-uri/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/images/trak_bar/trak_prop_graphic.svg" />
     <entry file="file://$PROJECT_DIR$/node_modules/react-native/Libraries/Modal/Modal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -513,6 +494,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="607">
           <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -520,6 +502,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2079">
           <caret line="115" column="16" lean-forward="false" selection-start-line="115" selection-start-column="16" selection-end-line="115" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -527,6 +510,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3234">
           <caret line="172" column="4" lean-forward="false" selection-start-line="172" selection-start-column="4" selection-end-line="172" selection-end-column="4" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -577,20 +561,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/navigation/MainTabNavigator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="31" lean-forward="true" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screens/StepsScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="7" column="19" lean-forward="false" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/screens/BaseScreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -599,36 +569,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/screens/TestScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/screens/HomeScreen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3213">
           <caret line="153" column="54" lean-forward="false" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="27" selection-end-column="6" />
           <folding>
-            <element signature="e#73#112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/navigation/AppNavigator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="38" column="29" lean-forward="false" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#15#41#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -707,36 +653,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/screens/trak/MainScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1659">
-          <caret line="89" column="46" lean-forward="false" selection-start-line="89" selection-start-column="46" selection-end-line="89" selection-end-column="46" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#73#99#0" expanded="true" />
-            <marker date="1532585413130" expanded="true" signature="3560:3656" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/DrawerScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1806">
-          <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="54" column="43" lean-forward="false" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
-          <folding>
-            <element signature="e#73#112#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/numberpicker/index.android.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -748,8 +664,105 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
-          <caret line="29" column="32" lean-forward="true" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-107">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="46" column="3" lean-forward="true" selection-start-line="46" selection-start-column="3" selection-end-line="46" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/navigation/MainTabNavigator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="47" lean-forward="false" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#1159#1389#0" expanded="false" />
+            <element signature="e#1436#1471#0" expanded="false" />
+            <element signature="e#1510#1742#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/DrawerScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="13" selection-end-line="99" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/navigation/AppNavigator.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/trak/SemenAnalysisScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="26" column="1" lean-forward="false" selection-start-line="26" selection-start-column="1" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="e#73#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/TestScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="40" lean-forward="true" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/trak/EnterTrakResultScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="34" column="25" lean-forward="true" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+          <folding>
+            <element signature="e#73#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/trak/MainScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="39" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#73#99#0" expanded="true" />
+            <marker date="1532975443296" expanded="true" signature="3769:3865" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/StepsScreen.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+          <folding>
+            <element signature="e#73#112#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

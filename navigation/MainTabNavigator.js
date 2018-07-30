@@ -7,8 +7,6 @@ import HomeScreen from '../screens/HomeScreen';
 import ExpertScreen from '../screens/ExpertScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import QuizScreen from '../screens/QuizScreen';
-import MainTrakScreen from '../screens/trak/MainScreen';
-import StepsScreen from '../screens/StepsScreen';
 
 // import SettingsScreen from '../screens/SettingsScreen';
 // import TestScreen from '../screens/TestScreen'
@@ -16,9 +14,7 @@ import StepsScreen from '../screens/StepsScreen';
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const HomeStack = createStackNavigator({
-    Home: HomeScreen,
-    TrakScreen: MainTrakScreen,
-    StepsScreen: StepsScreen
+    Home: HomeScreen
 });
 
 HomeStack.navigationOptions = {

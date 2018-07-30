@@ -8,17 +8,21 @@ import React from 'react';
 import {Text, View, StyleSheet, FlatList, AsyncStorage, mainStylesheet} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import _ from 'lodash';
+import BaseScreen from '../BaseScreen'
+import HeaderBackButton from '../../components/HeaderBackButton';
 import TrakPropGraphic from '../../components/TrakPropGraphic';
 import TrakResultListItem from '../../components/TrakResultListItem';
 import mainStyles from '../../assets/style/style';
 
-export default class TrakScreen extends React.Component {
+export default class TrakScreen extends BaseScreen {
 
     static navigationOptions = ({navigation}) => {
         return {
             title: 'Trak',
-            header: null
-        };
+            headerLeft: (
+                <HeaderBackButton navigation={navigation}/>
+            )
+        }
     };
 
     isWillUnmound = false;
@@ -33,6 +37,7 @@ export default class TrakScreen extends React.Component {
     }
 
     componentDidMount() {
+        super.componentDidMount();
         this._loadTrakResultList();
     }
 

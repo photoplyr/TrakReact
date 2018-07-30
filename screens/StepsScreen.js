@@ -14,7 +14,9 @@ export default class StepsScreen extends BaseScreen {
     static navigationOptions = ({navigation}) => {
         return {
             title: 'Steps',
-            header: null
+            headerLeft: (
+                <HeaderBackButton navigation={navigation}/>
+            )
         }
     };
 
