@@ -87,7 +87,22 @@ export default class TrakScreen extends React.Component {
 
                 <View style={styles.btnContainer}>
                     <Button
-                        title="Add"
+                        title="Semen Analysis"
+                        onPress={() => {
+                            this.props.navigation.navigate('SemenAnalysisScreen', {callUpdate: this.callUpdate.bind(this)})
+                        }}
+
+                        backgroundColor="#3b98da"
+                        // containerStyle={{
+                        //     flex: 1
+                        // }}
+                        buttonStyle={{
+                            height: 45,
+                            margin: 10,
+                        }}
+                    />
+                    <Button
+                        title="Trak Result"
                         onPress={() => {
                             this.props.navigation.navigate('EnterTrakResultScreen', {callUpdate: this.callUpdate.bind(this)})
                         }}

@@ -13,6 +13,7 @@ import HeaderButtons from 'react-navigation-header-buttons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import TestScreen from '../screens/TestScreen'
 import EnterTrakResultScreen from '../screens/trak/EnterTrakResultScreen';
+import SemenAnalysisScreen from '../screens/trak/SemenAnalysisScreen';
 
 const AuthStack = createStackNavigator({
     SignIn: SignInScreen,
@@ -34,7 +35,8 @@ const AppStack = createStackNavigator({
             screen: DrawerNavigator
         },
         TestScreen: TestScreen,
-        EnterTrakResultScreen: EnterTrakResultScreen
+        EnterTrakResultScreen: EnterTrakResultScreen,
+        SemenAnalysisScreen: SemenAnalysisScreen,
     }, {
         navigationOptions: ({navigation}) => {
             return {
