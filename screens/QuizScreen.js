@@ -1,11 +1,5 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
-
-import QuizList from '../components/Quiz/QuizList';
-
-var customerQuizData = require('../api/quiz.json');
-
-var styles = require('../assets/style/style').styles;
+import { WebView } from 'react-native';
 
 export default class QuizScreen extends React.Component {
   static navigationOptions = {
@@ -15,9 +9,9 @@ export default class QuizScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{flex: 1}}>
-        <QuizList data={customerQuizData} />
-      </ScrollView>
+      <WebView
+        source={{uri: 'https://trakfertility.tools/api/embed/test/quiz/2'}}
+      />
     );
   }
 }
