@@ -5,7 +5,7 @@
  */
 
 import React, {Component} from 'react';
-import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions, AsyncStorage} from 'react-native';
+import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions, AsyncStorage, Alert} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import moment from 'moment-timezone';
 
@@ -134,6 +134,11 @@ export default class EnterTrakResultScreen extends BaseScreen {
     }
 
     _add = async () => {
+
+        if (this.state.barValue <= 0) {
+            return false;
+        }
+
         const listRaw = await AsyncStorage.getItem('trak_result');
         const list = listRaw == null ? [] : JSON.parse(listRaw);
 

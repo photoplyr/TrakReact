@@ -98,9 +98,9 @@ export default class TrakScreen extends BaseScreen {
                         }}
 
                         backgroundColor="#3b98da"
-                        // containerStyle={{
-                        //     flex: 1
-                        // }}
+                         containerStyle={{
+                             flex: 1
+                         }}
                         buttonStyle={{
                             height: 45,
                             margin: 10,
@@ -113,9 +113,9 @@ export default class TrakScreen extends BaseScreen {
                         }}
 
                         backgroundColor="#3b98da"
-                        // containerStyle={{
-                        //     flex: 1
-                        // }}
+                         containerStyle={{
+                             flex: 1
+                         }}
                         buttonStyle={{
                             height: 45,
                             margin: 10,
@@ -152,5 +152,9 @@ const styles = StyleSheet.create({
     resultContainer: {
         backgroundColor: '#FDFDFD'
     },
-    btnContainer: {}
+    btnContainer: {
+        flex:1,
+        flexDirection: 'row',
+        marginBottom:10
+    }
 })
