@@ -135,16 +135,7 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
     _add = async () => {
 
-        if(this.state.barValue <= 0){
-            //alert('Please enter data');
-            Alert.alert(
-                'Trak',
-                'Please enter data',
-                [
-                    {text: 'OK', onPress: () => console.log('OK Pressed')},
-                ],
-                { cancelable: false }
-            );
+        if (this.state.barValue <= 0) {
             return false;
         }
 

@@ -73,7 +73,11 @@ export default class EnterTrakResultScreen extends BaseScreen {
                         </View>
 
                         <View style={styles.bottomContainer}>
-                            <Text style={styles.bottomText}>Sperm concentration measures the amount of sperm in each milliliter of semen. If you report only provides total sperm count, you can calculate the sperm concentration by dividing the total count by semen volume. If your report simply says sperm count you may want to call the lab to clarify if it is reporting the concentration or the total count.</Text>
+                            <Text style={styles.bottomText}>Sperm concentration measures the amount of sperm in each
+                                milliliter of semen. If you report only provides total sperm count, you can calculate
+                                the sperm concentration by dividing the total count by semen volume. If your report
+                                simply says sperm count you may want to call the lab to clarify if it is reporting the
+                                concentration or the total count.</Text>
 
                             <Button
                                 title="OK"
@@ -105,16 +109,7 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
     _add = async () => {
 
-        if(this.state.value <= 0){
-            //alert('Please enter data');
-            Alert.alert(
-                'Trak',
-                'Please enter data',
-                [
-                    {text: 'OK'},
-                ],
-                { cancelable: false }
-            );
+        if (this.state.value <= 0) {
             return false;
         }
 
