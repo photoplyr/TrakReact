@@ -80,15 +80,18 @@ export default class TrakScreen extends BaseScreen {
                 </View>
 
 
-                <Text style={mainStyles.headerContainer}>RESULTS</Text>
+                <View style={{flex: 1}}>
+                    <Text style={mainStyles.headerContainer}>RESULTS</Text>
 
-                <FlatList style={styles.resultContainer}
-                          data={this.state.resultList}
-                          renderItem={({item}) => <TrakResultListItem key={item.key} _key={item.key} date={item.date}
-                                                                      result={item.result}
-                                                                      value={item.value}
-                                                                      onPressRemoveItem={this.callRemoveItem.bind(this)}/>}
-                />
+                    <FlatList style={styles.resultContainer}
+                              data={this.state.resultList}
+                              renderItem={({item}) => <TrakResultListItem key={item.key} _key={item.key}
+                                                                          date={item.date}
+                                                                          result={item.result}
+                                                                          value={item.value}
+                                                                          onPressRemoveItem={this.callRemoveItem.bind(this)}/>}
+                    />
+                </View>
 
                 <View style={styles.btnContainer}>
                     <Button
@@ -98,9 +101,9 @@ export default class TrakScreen extends BaseScreen {
                         }}
 
                         backgroundColor="#3b98da"
-                         containerStyle={{
-                             flex: 1
-                         }}
+                        containerStyle={{
+                            flex: 1
+                        }}
                         buttonStyle={{
                             height: 45,
                             margin: 10,
@@ -113,9 +116,9 @@ export default class TrakScreen extends BaseScreen {
                         }}
 
                         backgroundColor="#3b98da"
-                         containerStyle={{
-                             flex: 1
-                         }}
+                        containerStyle={{
+                            flex: 1
+                        }}
                         buttonStyle={{
                             height: 45,
                             margin: 10,
@@ -137,7 +140,7 @@ export default class TrakScreen extends BaseScreen {
         }
         avgValue = avgValue / _.size(list);
 
-        this.setState({progress: avgValue});
+        this.setState({progress: avgValue * 0.94});
         this.setState({resultList: list});
     }
 }
@@ -153,8 +156,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FDFDFD'
     },
     btnContainer: {
-        flex:1,
         flexDirection: 'row',
-        marginBottom:10
+        marginBottom: 10
     }
 })

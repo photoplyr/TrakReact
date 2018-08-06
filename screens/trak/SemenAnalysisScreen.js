@@ -139,7 +139,8 @@ const styles = StyleSheet.create({
         position: 'absolute',
         bottom: 10,
         left: 0,
-        right: 0
+        right: 0,
+        marginBottom:10
     },
     bottomText: {
         marginTop: 10,

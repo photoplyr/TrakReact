@@ -22,7 +22,7 @@ export default class TrakResultListItem extends React.PureComponent {
             _result = 'Moderate';
             _color = '#ffe43c';
         }
-        if (value < 15) {
+        if (value <= 15) {
             _result = 'Low';
             _color = '#d23e36';
         }
