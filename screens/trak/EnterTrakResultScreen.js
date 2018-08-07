@@ -17,25 +17,31 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 
 let maxBarHeight = 367;
 let percentSize = 1;
-export default class EnterTrakResultScreen extends BaseScreen {
-    static navigationOptions = ({navigation}) => {
-        return {
-            title: 'Enter Trak Result',
-            headerLeft: (
-                <HeaderBackButton navigation={navigation}/>
-            )
-        }
-    };
+export default class EnterTrakResultScreen  extends React.Component  {
 
-    componentWillUnmount() {
-        const {params} = this.props.navigation.state;
-        params.callUpdate();
-    }
+  static navigationOptions = {
+    title: 'Trak',
+      header: null
+  };
 
-    componentDidMount() {
-        super.componentDidMount();
-        console.log('componentDidMount..');
-    }
+    // static navigationOptions = ({navigation}) => {
+    //     return {
+    //         title: 'Enter Trak Result',
+    //         headerLeft: (
+    //             <HeaderBackButton navigation={navigation}/>
+    //         )
+    //     }
+    // };
+    //
+    // componentWillUnmount() {
+    //     const {params} = this.props.navigation.state;
+    //     params.callUpdate();
+    // }
+    //
+    // componentDidMount() {
+    //     super.componentDidMount();
+    //     console.log('componentDidMount..');
+    // }
 
     constructor(props) {
         super(props);

@@ -3,10 +3,14 @@ import {Platform} from 'react-native';
 import {DrawerActions, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
+import TrakResultScreen from '../screens/trak/EnterTrakResultScreen';
+import TrakAnalysisScreen from '../screens/trak/SemenAnalysisScreen';
+
 import HomeScreen from '../screens/HomeScreen';
 import ExpertScreen from '../screens/ExpertScreen';
 import CommunityScreen from '../screens/CommunityScreen';
 import QuizScreen from '../screens/QuizScreen';
+import InfoScreen from '../screens/InfoScreen';
 
 // import SettingsScreen from '../screens/SettingsScreen';
 // import TestScreen from '../screens/TestScreen'
@@ -27,6 +31,50 @@ HomeStack.navigationOptions = {
                     ? `ios-person${focused ? '' : '-outline'}`
                     : 'md-person'
             }
+        />
+    ),
+};
+
+
+const Info = createStackNavigator({
+    Info: InfoScreen,
+});
+
+Info.navigationOptions = {
+    tabBarLabel: 'Info',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
+        />
+    ),
+};
+
+const TrakResult = createStackNavigator({
+    Trak: TrakResultScreen,
+});
+
+TrakResult.navigationOptions = {
+    tabBarLabel: 'Trak',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
+        />
+    ),
+};
+
+
+const TrakAnalysis = createStackNavigator({
+    Trak: TrakAnalysisScreen,
+});
+
+TrakAnalysis.navigationOptions = {
+    tabBarLabel: 'Semen Analysis',
+    tabBarIcon: ({focused}) => (
+        <TabBarIcon
+            focused={focused}
+            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
         />
     ),
 };
@@ -115,9 +163,14 @@ ExpertsStack.transitionConfig = () => {
 
 
 export default createBottomTabNavigator({
-    HomeStack,
+
+    // HomeStack,
     QuizStack,
-    CommunityStack,
-    ExpertsStack,
+    TrakResult,
+    TrakAnalysis,
+    Info,
+
+    // CommunityStack,
+    // ExpertsStack,
     // TabTrakStack,
 });

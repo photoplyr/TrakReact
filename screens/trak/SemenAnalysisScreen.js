@@ -14,16 +14,22 @@ import BaseScreen from '../BaseScreen'
 import HeaderBackButton from '../../components/HeaderBackButton';
 
 
-export default class EnterTrakResultScreen extends BaseScreen {
-    static navigationOptions = ({navigation}) => {
-        return {
-            title: 'Semen Analysis',
-            headerLeft: (
-                <HeaderBackButton navigation={navigation}/>
-            )
-        }
-    };
+export default class EnterTrakResultScreen extends React.Component  {
 
+  static navigationOptions = {
+    title: 'Trak',
+      header: null
+  };
+
+    // static navigationOptions = ({navigation}) => {
+    //     return {
+    //         title: 'Semen Analysis',
+    //         headerLeft: (
+    //             <HeaderBackButton navigation={navigation}/>
+    //         )
+    //     }
+    // };
+    //
     constructor(props) {
         super(props);
 
@@ -33,10 +39,10 @@ export default class EnterTrakResultScreen extends BaseScreen {
         }
     }
 
-    componentWillUnmount() {
-        const {params} = this.props.navigation.state;
-        params.callUpdate();
-    }
+    // componentWillUnmount() {
+    //     const {params} = this.props.navigation.state;
+    //     params.callUpdate();
+    // }
 
     render() {
         const values = [1, 2, 3, 4, 5];
