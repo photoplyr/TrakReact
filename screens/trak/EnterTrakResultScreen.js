@@ -15,8 +15,8 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 // import HeaderButtons from 'react-navigation-header-buttons'
 // import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const maxBarHeight = 367;
-
+let maxBarHeight = 367;
+let percentSize = 1;
 export default class EnterTrakResultScreen extends BaseScreen {
     static navigationOptions = ({navigation}) => {
         return {
@@ -42,7 +42,17 @@ export default class EnterTrakResultScreen extends BaseScreen {
         this.state = {
             barHeight: 0,
             prevHeight: 0,
-            barValue: 0
+            barValue: 0,
+            barContainerDimensions: {width: 0, height: 0},
+            barTopHeight: 70,
+            barCenterHeight: 300,
+            barBottomHeight: 24,
+            barWidth: 150,
+            barBgBlackSmallWidth: 150,
+            styleBarWidth: 148,
+            styleBarLeft: 0,
+            styleBarBottom: 26,
+            styleBarBgBlackBigHeight: 370
         };
 
         this.panResponder = PanResponder.create({
@@ -89,16 +99,29 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
                     {/*<Text>move count: {this.state.barHeight} Value: {this.state.barValue}</Text>*/}
 
-                    <View style={styles.barContainer}>
-                        <View style={styles.barBgBlackSmall}/>
-                        <View style={styles.barBgBlackBig}/>
-                        <View style={styles.bar} height={this.state.barHeight}/>
+                    <View onLayout={this._onLayout} style={styles.barContainer}>
+                        <View style={[styles.barBgBlackSmall, {width: this.state.barBgBlackSmallWidth}]}/>
+                        <View style={[styles.barBgBlackBig, {height: this.state.styleBarBgBlackBigHeight}]}/>
+
+                        <View style={[styles.bar, {
+                            left: this.state.styleBarLeft,
+                            width: this.state.styleBarWidth,
+                            bottom: this.state.styleBarBottom
+                        }]}
+                              height={this.state.barHeight}/>
+
                         <Image source={require('../../assets/images/trak_bar/prop_top_compressed.png')}
-                               style={styles.barTop}/>
+                               style={[styles.barTop, {height: this.state.barTopHeight, width: this.state.barWidth}]}/>
                         <Image source={require('../../assets/images/trak_bar/prop_center_compressed.png')}
-                               style={styles.barCenter}/>
+                               style={[styles.barCenter, {
+                                   height: this.state.barCenterHeight,
+                                   width: this.state.barWidth
+                               }]}/>
                         <Image source={require('../../assets/images/trak_bar/prop_bottom_compressed.png')}
-                               style={styles.barBottom}/>
+                               style={[styles.barBottom, {
+                                   height: this.state.barBottomHeight,
+                                   width: this.state.barWidth
+                               }]}/>
                     </View>
 
                     <View style={styles.btnControlContainer}>
@@ -183,51 +206,87 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
     _calculateValue = () => {
         const h = this.state.barHeight;
-        const value = Math.round(h / 2.5);
+        const value = Math.round(h / (2.4 * percentSize));
         // console.log(`H: ${h} value: ${value}`);
         this.setState(
             {barValue: value}
         );
     }
+
+    _onLayout = event => {
+        // if (this.state.dimensions) return // layout was already called
+        const minBarTopHeight = 70;
+        const minBarCenterHeight = 300;
+        const minBarBottomHeight = 24;
+        const minBarWidth = 140;
+        const minBarBottom = 26;
+        const minMaxBarHeight = 367;
+        const minBarBgBlackBig = 370;
+
+        let {width, height} = event.nativeEvent.layout;
+
+        percentSize = ((height * 100) / barHeight) / 100;
+
+        this.setState({barContainerDimensions: {width, height}});
+
+        this.setState({barTopHeight: minBarTopHeight * percentSize});
+        this.setState({barCenterHeight: minBarCenterHeight * percentSize});
+        // this.setState({barBottomHeight: minBarBottomHeight * percentSize});
+        this.setState({barWidth: minBarWidth * percentSize});
+        this.setState({barBgBlackSmallWidth: minBarWidth * percentSize});
+
+        this.setState({styleBarLeft: width / 2 - (( (minBarWidth - 4 ) * percentSize ) / 2)});
+
+        this.setState({styleBarWidth: (minBarWidth - 4) * percentSize});
+        this.setState({styleBarBottom: minBarBottom * percentSize});
+        this.setState({styleBarBgBlackBigHeight: minBarBgBlackBig * percentSize});
+        maxBarHeight = minMaxBarHeight * percentSize;
+
+        console.log({width, height});
+
+
+    }
 }
 
 
 let Window = Dimensions.get('window');
-const barWidth = 160;
+const barWidth = 150;
+const barHeight = 394;
 const styles = StyleSheet.create({
     bar: {
         position: 'absolute',
         backgroundColor: '#ffffff',
         height: 1,
-        width: barWidth - 2,
-        bottom: 26,
-        left: Window.width / 2 - ((barWidth - 2) / 2),
+        // width: barWidth - 2,
+        // bottom: 26,
+        // left: Window.width / 2 - ((barWidth - 2) / 2),
     },
     barContainer: {
-        // flex: 1,
+        flex: 1,
         // backgroundColor: '#fffe03',
         marginTop: 10,
+        marginBottom: 30,
         alignItems: 'center',
     },
     barTop: {
         resizeMode: Image.resizeMode.stretch,
-        width: barWidth,
-        height: 70,
+        // width: barWidth,
+        // height: 70,
         // backgroundColor: '#fffe03',
     },
     barCenter: {
         resizeMode: Image.resizeMode.stretch,
-        width: barWidth,
-        height: 300
+        // width: barWidth,
+        // height: 300
     },
     barBottom: {
         resizeMode: Image.resizeMode.stretch,
-        width: barWidth,
-        height: 24
+        // width: barWidth,
+        // height: 24
     },
     barBgBlackBig: {
-        width: 100,
-        height: 390,
+        width: 95,
+        // height: 390,
         backgroundColor: "#000",
         position: "absolute"
     },
@@ -245,10 +304,11 @@ const styles = StyleSheet.create({
         textAlign: 'justify'
     },
     bottomContainer: {
-        position: 'absolute',
-        bottom: 10,
-        left: 0,
-        right: 0
+        marginBottom: 10
+        // position: 'absolute',
+        // bottom: 10,
+        // left: 0,
+        // right: 0
     },
     btnControlContainer: {
         position: 'absolute',
