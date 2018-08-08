@@ -3,8 +3,9 @@ import {Platform} from 'react-native';
 import {DrawerActions, createStackNavigator, createBottomTabNavigator} from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import TrakResultScreen from '../screens/trak/EnterTrakResultScreen';
-import TrakAnalysisScreen from '../screens/trak/SemenAnalysisScreen';
+// import TrakResultScreen from '../screens/trak/EnterTrakResultScreen';
+// import TrakAnalysisScreen from '../screens/trak/SemenAnalysisScreen';
+import MainTrakScreen from '../screens/trak/MainScreen'
 
 import HomeScreen from '../screens/HomeScreen';
 import ExpertScreen from '../screens/ExpertScreen';
@@ -50,11 +51,11 @@ Info.navigationOptions = {
     ),
 };
 
-const TrakResult = createStackNavigator({
-    Trak: TrakResultScreen,
+const MainTrak = createStackNavigator({
+    MainTrak: MainTrakScreen,
 });
 
-TrakResult.navigationOptions = {
+MainTrak.navigationOptions = {
     tabBarLabel: 'Trak',
     tabBarIcon: ({focused}) => (
         <TabBarIcon
@@ -65,19 +66,19 @@ TrakResult.navigationOptions = {
 };
 
 
-const TrakAnalysis = createStackNavigator({
-    Trak: TrakAnalysisScreen,
-});
-
-TrakAnalysis.navigationOptions = {
-    tabBarLabel: 'Semen Analysis',
-    tabBarIcon: ({focused}) => (
-        <TabBarIcon
-            focused={focused}
-            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
-        />
-    ),
-};
+// const TrakAnalysis = createStackNavigator({
+//     Trak: TrakAnalysisScreen,
+// });
+//
+// TrakAnalysis.navigationOptions = {
+//     tabBarLabel: 'Semen Analysis',
+//     tabBarIcon: ({focused}) => (
+//         <TabBarIcon
+//             focused={focused}
+//             name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
+//         />
+//     ),
+// };
 
 const QuizStack = createStackNavigator({
     Quiz: QuizScreen,
@@ -166,8 +167,8 @@ export default createBottomTabNavigator({
 
     // HomeStack,
     QuizStack,
-    TrakResult,
-    TrakAnalysis,
+    MainTrak,
+    // TrakAnalysis,
     Info,
 
     // CommunityStack,

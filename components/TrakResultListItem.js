@@ -31,9 +31,10 @@ export default class TrakResultListItem extends React.PureComponent {
             _color = '#a8ca50';
         }
 
+        //moment(date).format('YYYY.MM.DD')
         return (
             <View style={styles.container}>
-                <Text style={styles.date}>{moment(date).format('YYYY.MM.DD')}</Text>
+                <Text style={styles.date}>{date}</Text>
                 {<Text style={styles.value}>{value}M/mL</Text>}
 
                 <View style={{flex: 0, flexDirection: 'row', alignItems: 'center'}}>

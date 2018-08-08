@@ -8,7 +8,7 @@ import React, {Component} from 'react';
 import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions, AsyncStorage, Alert} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import moment from 'moment-timezone';
-
+import ApiService from '../../services/ApiService';
 import BaseScreen from '../BaseScreen'
 import HeaderBackButton from '../../components/HeaderBackButton';
 
@@ -17,35 +17,36 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 
 let maxBarHeight = 367;
 let percentSize = 1;
-export default class EnterTrakResultScreen  extends React.Component  {
+export default class EnterTrakResultScreen extends BaseScreen {
 
-  static navigationOptions = {
-    title: 'Trak',
-      header: null
-  };
-
-    // static navigationOptions = ({navigation}) => {
-    //     return {
-    //         title: 'Enter Trak Result',
-    //         headerLeft: (
-    //             <HeaderBackButton navigation={navigation}/>
-    //         )
-    //     }
+    // static navigationOptions = {
+    //   title: 'Trak',
+    //     header: null
     // };
-    //
-    // componentWillUnmount() {
-    //     const {params} = this.props.navigation.state;
-    //     params.callUpdate();
-    // }
-    //
-    // componentDidMount() {
-    //     super.componentDidMount();
-    //     console.log('componentDidMount..');
-    // }
+
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'Enter Trak Result',
+            headerLeft: (
+                <HeaderBackButton navigation={navigation}/>
+            )
+        }
+    };
+
+    componentWillUnmount() {
+        const {params} = this.props.navigation.state;
+        params.callUpdate();
+    }
+
+    componentDidMount() {
+        super.componentDidMount();
+        console.log('componentDidMount..');
+    }
 
     constructor(props) {
         super(props);
         this.state = {
+            isBtnLoading: false,
             barHeight: 0,
             prevHeight: 0,
             barValue: 0,
@@ -147,7 +148,7 @@ export default class EnterTrakResultScreen  extends React.Component  {
                         <Button
                             title="OK"
                             onPress={this._add}
-
+                            loading={this.state.isBtnLoading}
                             backgroundColor="#3b98da"
                             buttonStyle={{
                                 height: 45,
@@ -168,17 +169,24 @@ export default class EnterTrakResultScreen  extends React.Component  {
             return false;
         }
 
-        const listRaw = await AsyncStorage.getItem('trak_result');
-        const list = listRaw == null ? [] : JSON.parse(listRaw);
+        // const listRaw = await AsyncStorage.getItem('trak_result');
+        // const list = listRaw == null ? [] : JSON.parse(listRaw);
+        // list.push({
+        //     key: new Date().getTime().toString(),
+        //     date: moment().format(),
+        //     type: 'device',
+        //     value: this.state.barValue
+        // });
+        // await AsyncStorage.setItem('trak_result', JSON.stringify(list));
 
-        list.push({
-            key: new Date().getTime().toString(),
-            date: moment().format(),
-            result: 'test',
+        this.setState({isBtnLoading: true});
+
+        const resp = await new ApiService().Trak().addResult({
+            date: moment().format('YYYY-MM-DD'),
+            type: 'device',
             value: this.state.barValue
         });
 
-        await AsyncStorage.setItem('trak_result', JSON.stringify(list));
         this.props.navigation.goBack();
     }
 

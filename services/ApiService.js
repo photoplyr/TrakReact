@@ -3,8 +3,10 @@
  * Date: 7/6/18
  * Time: 12:07 PM
  */
+
 import {create} from 'apisauce'
 import Auth from './Auth'
+import Trak from './Trak'
 
 export default class ApiService {
     api = null;
@@ -13,7 +15,7 @@ export default class ApiService {
         // define the api
         this.api = create({
             baseURL: 'http://13.57.223.188/api',
-            headers: {'Accept': 'application/vnd.github.v3+json'}
+            headers: {'Accept': 'application/json'}
         })
     }
 
@@ -21,4 +23,7 @@ export default class ApiService {
         return new Auth(this.api);
     }
 
+    Trak() {
+        return new Trak(this.api);
+    }
 }

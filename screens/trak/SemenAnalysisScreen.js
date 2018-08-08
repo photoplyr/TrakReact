@@ -12,43 +12,45 @@ import {Button, Input} from 'react-native-elements';
 import moment from 'moment-timezone';
 import BaseScreen from '../BaseScreen'
 import HeaderBackButton from '../../components/HeaderBackButton';
+import ApiService from '../../services/ApiService';
 
 
-export default class EnterTrakResultScreen extends React.Component  {
+export default class EnterTrakResultScreen extends BaseScreen {
 
-  static navigationOptions = {
-    title: 'Trak',
-      header: null
-  };
-
-    // static navigationOptions = ({navigation}) => {
-    //     return {
-    //         title: 'Semen Analysis',
-    //         headerLeft: (
-    //             <HeaderBackButton navigation={navigation}/>
-    //         )
-    //     }
+    // static navigationOptions = {
+    //   title: 'Trak',
+    //     header: null
     // };
-    //
+
+    static navigationOptions = ({navigation}) => {
+        return {
+            title: 'Semen Analysis',
+            headerLeft: (
+                <HeaderBackButton navigation={navigation}/>
+            )
+        }
+    };
+
     constructor(props) {
         super(props);
 
         this.state = {
             language: null,
-            value: 15
+            value: 15,
+            isBtnLoading: false
         }
     }
 
-    // componentWillUnmount() {
-    //     const {params} = this.props.navigation.state;
-    //     params.callUpdate();
-    // }
+    componentWillUnmount() {
+        const {params} = this.props.navigation.state;
+        params.callUpdate();
+    }
 
     render() {
         const values = [1, 2, 3, 4, 5];
         const selectedIndex = 2;
         return (
-            <View style={{flex: 1, backgroundColor: '#fff'}}>
+            <View style={styles.container}>
                 <IndicatorViewPager
                     style={{flex: 1}}
                     // indicator={this._renderDotIndicator()}
@@ -88,7 +90,7 @@ export default class EnterTrakResultScreen extends React.Component  {
                             <Button
                                 title="OK"
                                 onPress={this._add}
-
+                                loading={this.state.isBtnLoading}
                                 backgroundColor="#3b98da"
                                 buttonStyle={{
                                     height: 45,
@@ -119,23 +121,35 @@ export default class EnterTrakResultScreen extends React.Component  {
             return false;
         }
 
-        const listRaw = await AsyncStorage.getItem('trak_result');
-        const list = listRaw == null ? [] : JSON.parse(listRaw);
+        // const listRaw = await AsyncStorage.getItem('trak_result');
+        // const list = listRaw == null ? [] : JSON.parse(listRaw);
+        // list.push({
+        //     key: new Date().getTime().toString(),
+        //     date: moment().format(),
+        //     type: 'manually',
+        //     value: this.state.value
+        // });
+        // await AsyncStorage.setItem('trak_result', JSON.stringify(list));
 
-        list.push({
-            key: new Date().getTime().toString(),
-            date: moment().format(),
-            result: 'manually',
+        this.setState({isBtnLoading: true});
+
+        await new ApiService().Trak().addResult({
+            date: moment().format('YYYY-MM-DD'),
+            type: 'manually',
             value: this.state.value
         });
 
-        await AsyncStorage.setItem('trak_result', JSON.stringify(list));
         this.props.navigation.goBack();
     }
 }
 
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        margin: 10,
+    },
     title: {
         textAlign: 'center',
         padding: 20,
@@ -146,7 +160,7 @@ const styles = StyleSheet.create({
         bottom: 10,
         left: 0,
         right: 0,
-        marginBottom:10
+        marginBottom: 10
     },
     bottomText: {
         marginTop: 10,

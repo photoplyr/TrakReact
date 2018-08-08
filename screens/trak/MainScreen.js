@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import {Text, View, StyleSheet, FlatList, AsyncStorage, mainStylesheet} from 'react-native';
+import {Text, View, StyleSheet, FlatList, AsyncStorage, mainStylesheet, ActivityIndicator} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import _ from 'lodash';
 import BaseScreen from '../BaseScreen'
@@ -13,15 +13,17 @@ import HeaderBackButton from '../../components/HeaderBackButton';
 import TrakPropGraphic from '../../components/TrakPropGraphic';
 import TrakResultListItem from '../../components/TrakResultListItem';
 import mainStyles from '../../assets/style/style';
+import ApiService from '../../services/ApiService';
 
 export default class TrakScreen extends BaseScreen {
 
     static navigationOptions = ({navigation}) => {
         return {
-            title: 'Trak',
-            headerLeft: (
-                <HeaderBackButton navigation={navigation}/>
-            )
+            header: null
+            // title: 'Trak',
+            // headerLeft: (
+            //     <HeaderBackButton navigation={navigation}/>
+            // )
         }
     };
 
@@ -32,7 +34,8 @@ export default class TrakScreen extends BaseScreen {
 
         this.state = {
             resultList: [],
-            progress: 0
+            progress: 0,
+            isLoading: true
         }
     }
 
@@ -52,20 +55,21 @@ export default class TrakScreen extends BaseScreen {
     }
 
     callRemoveItem = async (key) => {
-        const listRaw = await AsyncStorage.getItem('trak_result');
-        const list = listRaw == null ? [] : JSON.parse(listRaw);
-
-        var newList = _.remove(list, function (n) {
-            return n.key != key;
-        });
-
-        // for (const i in list) {
-        //     if (list[i].key == key) {
-        //         delete list[i];
-        //     }
-        // }
-
-        await AsyncStorage.setItem('trak_result', JSON.stringify(newList));
+        // const listRaw = await AsyncStorage.getItem('trak_result');
+        // const list = listRaw == null ? [] : JSON.parse(listRaw);
+        //
+        // var newList = _.remove(list, function (n) {
+        //     return n.key != key;
+        // });
+        //
+        // // for (const i in list) {
+        // //     if (list[i].key == key) {
+        // //         delete list[i];
+        // //     }
+        // // }
+        //
+        // await AsyncStorage.setItem('trak_result', JSON.stringify(newList));
+        await new ApiService().Trak().deleteResultItem(key);
         await this._loadTrakResultList();
     };
 
@@ -84,13 +88,27 @@ export default class TrakScreen extends BaseScreen {
                     <Text style={mainStyles.headerContainer}>RESULTS</Text>
 
                     <FlatList style={styles.resultContainer}
+                              keyExtractor={(item, index) => item.id.toString()}
                               data={this.state.resultList}
-                              renderItem={({item}) => <TrakResultListItem key={item.key} _key={item.key}
+                              renderItem={({item}) => <TrakResultListItem id={item.id.toString()} _key={item.id}
                                                                           date={item.date}
                                                                           result={item.result}
                                                                           value={item.value}
                                                                           onPressRemoveItem={this.callRemoveItem.bind(this)}/>}
                     />
+
+                    <View
+                        style={{
+                            display: this.state.isLoading ? 'flex' : 'none',
+                            position: 'absolute',
+                            left: 0,
+                            right: 0,
+                            top: 0,
+                            bottom: 0,
+                            justifyContent: 'center'
+                        }}>
+                        <ActivityIndicator style={{}} size="large"/>
+                    </View>
                 </View>
 
                 <View style={styles.btnContainer}>
@@ -130,8 +148,15 @@ export default class TrakScreen extends BaseScreen {
     }
 
     async _loadTrakResultList() {
-        const listRaw = await AsyncStorage.getItem('trak_result');
-        const list = listRaw == null ? [] : JSON.parse(listRaw);
+        this.setState({isLoading: true});
+        const resp = await new ApiService().Trak().getResultList();
+        // const listRaw = await AsyncStorage.getItem('trak_result');
+        let list = [];
+
+        if (resp) {
+            list = resp.data;
+        }
+
         _.reverse(list);
 
         let avgValue = 0;
@@ -142,6 +167,7 @@ export default class TrakScreen extends BaseScreen {
 
         this.setState({progress: avgValue * 0.94});
         this.setState({resultList: list});
+        this.setState({isLoading: false});
     }
 }
 
@@ -157,6 +183,5 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         flexDirection: 'row',
-        marginBottom: 10
     }
 })

@@ -39,7 +39,7 @@ const AppStack = createStackNavigator({
         TestScreen: TestScreen,
         EnterTrakResultScreen: EnterTrakResultScreen,
         SemenAnalysisScreen: SemenAnalysisScreen,
-        TrakScreen: MainTrakScreen,
+        // TrakScreen: MainTrakScreen,
         StepsScreen: StepsScreen
     }, {
         navigationOptions: ({navigation}) => {
