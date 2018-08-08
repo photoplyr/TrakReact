@@ -1,5 +1,5 @@
 import React from 'react';
-import { WebView } from 'react-native';
+import { WebView, AsyncStorage } from 'react-native';
 
 let userToken = AsyncStorage.getItem('userToken');
 
