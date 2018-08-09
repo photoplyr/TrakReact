@@ -1,7 +1,7 @@
 import React from 'react';
-import { WebView, AsyncStorage } from 'react-native';
+import { View, WebView, AsyncStorage } from 'react-native';
 
-let userToken = AsyncStorage.getItem('userToken');
+let userToken = null;
 
 export default class QuizScreen extends React.Component {
   static navigationOptions = {
@@ -9,12 +9,28 @@ export default class QuizScreen extends React.Component {
       header: null
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = { done: false };
+  };
+
+  async componentDidMount() {
+    userToken = await AsyncStorage.getItem('userToken');
+    this.setState((state) => {
+      state.done = true;
+      return {state};
+    });
+  };
+
   render() {
-    return (
-      <WebView
-        source={{uri: 'https://trakfertility.tools/api/embed/test/quiz/2'}}
-        injectedJavaScript={'(var Token = "'+ userToken +'");'}
-      />
-    );
-  }
+    return this.state.done ? (
+      <View style={{flex: 1}}>
+        <WebView
+          source={{uri: 'https://trakfertility.tools/api/embed/test/quiz/2'}}
+          injectedJavaScript={`Token = '`+ userToken +`'`}
+        />
+      </View>
+    ) : <View style={{flex: 1}}>Loading data</View>;
+  };
 }
