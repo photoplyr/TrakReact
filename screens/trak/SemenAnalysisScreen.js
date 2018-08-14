@@ -4,11 +4,11 @@
  * Time: 8:50 AM
  */
 
-import React, {Component} from 'react';
-import {ScrollView, Text, View, StyleSheet, Dimensions, AsyncStorage, Alert} from 'react-native';
-import {PagerTabIndicator, IndicatorViewPager, PagerTitleIndicator, PagerDotIndicator} from 'rn-viewpager';
+import React from 'react';
+import {Text, View, StyleSheet} from 'react-native';
+import {IndicatorViewPager, PagerDotIndicator} from 'rn-viewpager';
 import NumericInput, {calcSize} from 'react-native-numeric-input'
-import {Button, Input} from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import moment from 'moment-timezone';
 import BaseScreen from '../BaseScreen'
 import HeaderBackButton from '../../components/HeaderBackButton';
@@ -16,11 +16,6 @@ import ApiService from '../../services/ApiService';
 
 
 export default class EnterTrakResultScreen extends BaseScreen {
-
-    // static navigationOptions = {
-    //   title: 'Trak',
-    //     header: null
-    // };
 
     static navigationOptions = ({navigation}) => {
         return {
@@ -47,13 +42,11 @@ export default class EnterTrakResultScreen extends BaseScreen {
     }
 
     render() {
-        const values = [1, 2, 3, 4, 5];
-        const selectedIndex = 2;
+
         return (
             <View style={styles.container}>
                 <IndicatorViewPager
                     style={{flex: 1}}
-                    // indicator={this._renderDotIndicator()}
                 >
 
                     <View style={{flex: 1}}>
@@ -75,8 +68,6 @@ export default class EnterTrakResultScreen extends BaseScreen {
                                 maxValue={100}
                                 textColor='#000000'
                                 iconStyle={{color: '#000000'}}
-                                // rightButtonBackgroundColor='#EA3788'
-                                // leftButtonBackgroundColor='#E56B70'
                             />
                         </View>
 
@@ -103,9 +94,6 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
                     </View>
 
-                    {/*<View style={{backgroundColor: '#1AA094'}}>*/}
-                    {/*<Text>page three</Text>*/}
-                    {/*</View>*/}
                 </IndicatorViewPager>
             </View>
         );
@@ -120,16 +108,6 @@ export default class EnterTrakResultScreen extends BaseScreen {
         if (this.state.value <= 0) {
             return false;
         }
-
-        // const listRaw = await AsyncStorage.getItem('trak_result');
-        // const list = listRaw == null ? [] : JSON.parse(listRaw);
-        // list.push({
-        //     key: new Date().getTime().toString(),
-        //     date: moment().format(),
-        //     type: 'manually',
-        //     value: this.state.value
-        // });
-        // await AsyncStorage.setItem('trak_result', JSON.stringify(list));
 
         this.setState({isBtnLoading: true});
 
@@ -178,9 +156,6 @@ const styles = StyleSheet.create({
         top: 0,
         bottom: 100,
         justifyContent: 'center',
-        alignItems: 'center',
-        // alignSelf: 'center',
-        // alignContent:'center',
-        // backgroundColor: '#05ff72'
+        alignItems: 'center'
     },
 });

@@ -4,25 +4,18 @@
  * Time: 1:58 PM
  */
 
-import React, {Component} from 'react';
-import {ScrollView, Image, Text, View, PanResponder, StyleSheet, Dimensions, AsyncStorage, Alert} from 'react-native';
+import React from 'react';
+import {Image, Text, View, PanResponder, StyleSheet} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 import moment from 'moment-timezone';
 import ApiService from '../../services/ApiService';
 import BaseScreen from '../BaseScreen'
 import HeaderBackButton from '../../components/HeaderBackButton';
 
-// import HeaderButtons from 'react-navigation-header-buttons'
-// import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 let maxBarHeight = 367;
 let percentSize = 1;
 export default class EnterTrakResultScreen extends BaseScreen {
-
-    // static navigationOptions = {
-    //   title: 'Trak',
-    //     header: null
-    // };
 
     static navigationOptions = ({navigation}) => {
         return {
@@ -97,8 +90,6 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
     render() {
         const {navigation} = this.props;
-        // const _itemId = navigation.getParam('itemId', 0);
-        // const _name = navigation.getParam('name', 'no-name');
 
         return (
             <View style={styles.container}>
@@ -164,20 +155,9 @@ export default class EnterTrakResultScreen extends BaseScreen {
     }
 
     _add = async () => {
-
         if (this.state.barValue <= 0) {
             return false;
         }
-
-        // const listRaw = await AsyncStorage.getItem('trak_result');
-        // const list = listRaw == null ? [] : JSON.parse(listRaw);
-        // list.push({
-        //     key: new Date().getTime().toString(),
-        //     date: moment().format(),
-        //     type: 'device',
-        //     value: this.state.barValue
-        // });
-        // await AsyncStorage.setItem('trak_result', JSON.stringify(list));
 
         this.setState({isBtnLoading: true});
 
@@ -221,14 +201,13 @@ export default class EnterTrakResultScreen extends BaseScreen {
     _calculateValue = () => {
         const h = this.state.barHeight;
         const value = Math.round(h / (2.4 * percentSize));
-        // console.log(`H: ${h} value: ${value}`);
         this.setState(
             {barValue: value}
         );
     }
 
     _onLayout = event => {
-        // if (this.state.dimensions) return // layout was already called
+
         const minBarTopHeight = 70;
         const minBarCenterHeight = 300;
         const minBarBottomHeight = 24;
@@ -262,45 +241,31 @@ export default class EnterTrakResultScreen extends BaseScreen {
     }
 }
 
-
-let Window = Dimensions.get('window');
 const barWidth = 150;
 const barHeight = 394;
 const styles = StyleSheet.create({
     bar: {
         position: 'absolute',
         backgroundColor: '#ffffff',
-        height: 1,
-        // width: barWidth - 2,
-        // bottom: 26,
-        // left: Window.width / 2 - ((barWidth - 2) / 2),
+        height: 1
     },
     barContainer: {
         flex: 1,
-        // backgroundColor: '#fffe03',
         marginTop: 10,
         marginBottom: 30,
         alignItems: 'center',
     },
     barTop: {
-        resizeMode: Image.resizeMode.stretch,
-        // width: barWidth,
-        // height: 70,
-        // backgroundColor: '#fffe03',
+        resizeMode: Image.resizeMode.stretch
     },
     barCenter: {
-        resizeMode: Image.resizeMode.stretch,
-        // width: barWidth,
-        // height: 300
+        resizeMode: Image.resizeMode.stretch
     },
     barBottom: {
-        resizeMode: Image.resizeMode.stretch,
-        // width: barWidth,
-        // height: 24
+        resizeMode: Image.resizeMode.stretch
     },
     barBgBlackBig: {
         width: 95,
-        // height: 390,
         backgroundColor: "#000",
         position: "absolute"
     },
@@ -319,10 +284,6 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         marginBottom: 10
-        // position: 'absolute',
-        // bottom: 10,
-        // left: 0,
-        // right: 0
     },
     btnControlContainer: {
         position: 'absolute',
@@ -331,11 +292,7 @@ const styles = StyleSheet.create({
         margin: 15,
         top: 0,
         bottom: 0,
-        justifyContent: 'center',
-        // alignItems: 'center',
-        // alignSelf: 'center',
-        // alignContent:'center',
-        // backgroundColor: '#05ff72'
+        justifyContent: 'center'
     },
     btnControl: {
         margin: 5,

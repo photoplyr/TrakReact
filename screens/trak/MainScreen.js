@@ -20,10 +20,6 @@ export default class TrakScreen extends BaseScreen {
     static navigationOptions = ({navigation}) => {
         return {
             header: null
-            // title: 'Trak',
-            // headerLeft: (
-            //     <HeaderBackButton navigation={navigation}/>
-            // )
         }
     };
 
@@ -55,20 +51,6 @@ export default class TrakScreen extends BaseScreen {
     }
 
     callRemoveItem = async (key) => {
-        // const listRaw = await AsyncStorage.getItem('trak_result');
-        // const list = listRaw == null ? [] : JSON.parse(listRaw);
-        //
-        // var newList = _.remove(list, function (n) {
-        //     return n.key != key;
-        // });
-        //
-        // // for (const i in list) {
-        // //     if (list[i].key == key) {
-        // //         delete list[i];
-        // //     }
-        // // }
-        //
-        // await AsyncStorage.setItem('trak_result', JSON.stringify(newList));
         await new ApiService().Trak().deleteResultItem(key);
         await this._loadTrakResultList();
     };
@@ -150,10 +132,10 @@ export default class TrakScreen extends BaseScreen {
     async _loadTrakResultList() {
         this.setState({isLoading: true});
         const resp = await new ApiService().Trak().getResultList();
-        // const listRaw = await AsyncStorage.getItem('trak_result');
+
         let list = [];
 
-        if (resp) {
+        if (resp && resp.status === 200) {
             list = resp.data;
         }
 
@@ -165,9 +147,7 @@ export default class TrakScreen extends BaseScreen {
         }
         avgValue = avgValue / _.size(list);
 
-        this.setState({progress: avgValue * 0.94});
-        this.setState({resultList: list});
-        this.setState({isLoading: false});
+        this.setState({isLoading: false, resultList: list, progress: avgValue * 0.94});
     }
 }
 
