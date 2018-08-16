@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, WebView, AsyncStorage } from 'react-native';
+import { View, WebView, AsyncStorage, Text } from 'react-native';
 
 let userToken = null;
 
@@ -31,6 +31,6 @@ export default class QuizScreen extends React.Component {
           injectedJavaScript={`Token = '`+ userToken +`'`}
         />
       </View>
-    ) : <View style={{flex: 1}}>Loading data</View>;
+    ) : <View style={{flex: 1}}><Text>Loading data</Text></View>;
   };
 }
