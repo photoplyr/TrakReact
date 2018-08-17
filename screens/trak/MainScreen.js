@@ -51,9 +51,17 @@ export default class TrakScreen extends BaseScreen {
     }
 
     callRemoveItem = async (key) => {
+        this.setState({isLoading: true});
         await new ApiService().Trak().deleteResultItem(key);
         await this._loadTrakResultList();
     };
+
+    _loadingView() {
+        return <View
+            style={styles.loadingContainer}>
+            <ActivityIndicator style={{}} size="large"/>
+        </View>
+    }
 
     render() {
         return (
@@ -79,18 +87,8 @@ export default class TrakScreen extends BaseScreen {
                                                                           onPressRemoveItem={this.callRemoveItem.bind(this)}/>}
                     />
 
-                    <View
-                        style={{
-                            display: this.state.isLoading ? 'flex' : 'none',
-                            position: 'absolute',
-                            left: 0,
-                            right: 0,
-                            top: 0,
-                            bottom: 0,
-                            justifyContent: 'center'
-                        }}>
-                        <ActivityIndicator style={{}} size="large"/>
-                    </View>
+                    {this.state.isLoading ? this._loadingView() : null}
+
                 </View>
 
                 <View style={styles.btnContainer}>
@@ -147,7 +145,11 @@ export default class TrakScreen extends BaseScreen {
         }
         avgValue = avgValue / _.size(list);
 
-        this.setState({isLoading: false, resultList: list, progress: avgValue * 0.94});
+        this.setState({
+            isLoading: false,
+            resultList: list,
+            progress: avgValue * 0.94
+        });
     }
 }
 
@@ -163,5 +165,13 @@ const styles = StyleSheet.create({
     },
     btnContainer: {
         flexDirection: 'row',
+    },
+    loadingContainer: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        bottom: 0,
+        justifyContent: 'center'
     }
 })
