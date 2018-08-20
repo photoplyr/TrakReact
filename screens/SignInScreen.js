@@ -28,8 +28,8 @@ export default class SignInScreen extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: 'skiner.dp@gmail.com',
-            password: '11111111',
+            email: '',
+            password: '',
             btnSignIn: {
                 isLoading: false,
                 title: 'Sign In'
