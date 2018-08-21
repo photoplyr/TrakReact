@@ -14,7 +14,7 @@ export default class ApiService {
     constructor() {
         // define the api
         this.api = create({
-            baseURL: 'http://13.57.223.188/api',
+            baseURL: 'https://trakfertility.tools/api',
             headers: {'Accept': 'application/json'}
         })
     }

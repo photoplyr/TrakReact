@@ -46,7 +46,7 @@ Info.navigationOptions = {
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
+            name={Platform.OS === 'ios' ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'}
         />
     ),
 };
@@ -60,7 +60,7 @@ MainTrak.navigationOptions = {
     tabBarIcon: ({focused}) => (
         <TabBarIcon
             focused={focused}
-            name={Platform.OS === 'ios' ? `ios-clipboard${focused ? '' : '-outline'}` : 'md-clipboard'}
+            name={Platform.OS === 'ios' ? `ios-people${focused ? '' : '-outline'}` : 'md-people'}
         />
     ),
 };
