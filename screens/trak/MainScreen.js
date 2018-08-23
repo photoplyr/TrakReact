@@ -9,7 +9,6 @@ import {Text, View, StyleSheet, FlatList, AsyncStorage, mainStylesheet, Activity
 import {Button, Input} from 'react-native-elements';
 import _ from 'lodash';
 import BaseScreen from '../BaseScreen'
-import HeaderBackButton from '../../components/HeaderBackButton';
 import TrakPropGraphic from '../../components/TrakPropGraphic';
 import TrakResultListItem from '../../components/TrakResultListItem';
 import mainStyles from '../../assets/style/style';

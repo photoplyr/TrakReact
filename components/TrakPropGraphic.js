@@ -5,8 +5,7 @@
  */
 
 import React from 'react';
-import {View, StyleSheet, Dimensions} from 'react-native';
-import SvgUri from 'react-native-svg-uri';
+import {View, StyleSheet, Dimensions, Image} from 'react-native';
 
 const Window = Dimensions.get('window');
 
@@ -23,7 +22,7 @@ export default class TrakPropGraphic extends React.Component {
         const {progress} = this.props;
         return (
             <View onLayout={this.onLayout}>
-                <SvgUri height={250} source={require('../assets/images/trak_bar/trak_bar.svg')}/>
+                <Image style={{height: 250}} resizeMode="contain" source={require('../assets/images/trak_bar/trak_bar.png')}/>
                 <View left={(this.state.dimensions.width / 2) + 15} height={`${progress}%`} style={styles.bar}/>
             </View>
         );
