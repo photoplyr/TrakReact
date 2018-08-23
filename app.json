@@ -4,7 +4,7 @@
     "description": "The Trak: Sperm Health & Fertility App is the only app that assesses your health and lifestyle risks.",
     "slug": "trak-react",
     "privacy": "public",
-    "sdkVersion": "28.0.0",
+    "sdkVersion": "29.0.0",
     "platforms": [
       "ios",
       "android"
@@ -26,22 +26,22 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.sandstonedx.com",
-      "publishBundlePath": "ios/trak-react/Supporting/shell-app.bundle",
-      "publishManifestPath": "ios/trak-react/Supporting/shell-app-manifest.json"
+      "publishBundlePath": "ios/trak/Supporting/shell-app.bundle",
+      "publishManifestPath": "ios/trak/Supporting/shell-app-manifest.json"
     },
     "android": {
       "permissions": [],
       "splash": {
         "backgroundColor": "#ffffff"
       },
-      "package": "com.sandstonedx.com",
+      "package": "com.sandstonediagnostics.v2.trak",
       "publishBundlePath": "android/app/src/main/assets/shell-app.bundle",
       "publishManifestPath": "android/app/src/main/assets/shell-app-manifest.json"
     },
     "isDetached": true,
     "detach": {
-      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.6.8-sdk28.0.0-d3178d29-6e12-458b-bfeb-8b7538943b48.tar.gz",
-      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.6.4-sdk28.0.0-9ba3198a-7d95-4769-9e16-178a37a70cae.tar.gz"
+      "iosExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/ios-v2.7.0-sdk29.0.0-de70611d-e42d-4d50-a6a5-2d8eabf6ed72.tar.gz",
+      "androidExpoViewUrl": "https://s3.amazonaws.com/exp-exponent-view-code/android-v2.7.2-sdk29.0.0-54e8f46d-36a6-460f-b0f9-e1043f28b215.tar.gz"
     },
     "scheme": "exp941c249ad97644a5a04907416bdf942c"
   }

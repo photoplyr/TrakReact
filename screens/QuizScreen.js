@@ -27,7 +27,7 @@ export default class QuizScreen extends React.Component {
     return this.state.done ? (
       <View style={{flex: 1}}>
         <WebView
-          source={{uri: 'http://trakfertility.tools/api/embed/test/quiz/3'}}
+          source={{uri: 'https://trakfertility.tools/api/embed/quiz/3'}}
           injectedJavaScript={`Token = '`+ userToken +`'`}
         />
       </View>
