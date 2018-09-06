@@ -31,4 +31,14 @@ export default class Auth {
         return response
     }
 
+    /**
+     * Reset password
+     * @param email
+     * @returns {Promise<ApiResponse<any>>}
+     */
+    async recoverPwd(email) {
+        const response = await  this.api.post('/reset', {email})
+        return response
+    }
+
 }

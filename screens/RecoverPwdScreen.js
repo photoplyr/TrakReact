@@ -18,9 +18,9 @@ import {
 import {Button, Input} from 'react-native-elements'
 import ApiService from '../services/ApiService'
 
-export default class SignInScreen extends Component {
+export default class RecoverPwdScreen extends Component {
     static navigationOptions = {
-        title: 'Sign in',
+        title: 'Recover Password',
         header: null,
         // header: {visible: false}
     };
@@ -29,10 +29,9 @@ export default class SignInScreen extends Component {
         super(props);
         this.state = {
             email: '',
-            password: '',
             btnSignIn: {
                 isLoading: false,
-                title: 'Sign In'
+                title: 'Send'
             },
             errorFirstName: null
         };
@@ -52,6 +51,9 @@ export default class SignInScreen extends Component {
                             style={styles.logoImg}/>
                     </View>
 
+                    <Text style={{textAlign: 'center', marginBottom: 10}}>Enter the email address you use to sign in to
+                        Trak</Text>
+
                     <View style={{paddingLeft: 16, paddingRight: 16, width: '100%'}}>
 
                         <Input
@@ -67,21 +69,11 @@ export default class SignInScreen extends Component {
                             errorStyle={{color: 'red'}}
                             errorMessage={this.state.errorFirstName}
                         />
-                        <Input
-                            placeholder='Password'
-                            secureTextEntry={true}
-                            containerStyle={styles.input}
-                            value={this.state.password}
-                            onChangeText={(password) => this.setState({password})}
-                            ref={(input) => {
-                                this.pwdInput = input;
-                            }}
-                        />
 
                         <View style={styles.btnContainer}>
                             <Button
                                 title={this.state.btnSignIn.title}
-                                onPress={this._signInAsync}
+                                onPress={this._recoverAsync}
                                 borderRadius={5}
                                 loading={this.state.btnSignIn.isLoading}
                                 backgroundColor="#3b98da"
@@ -92,12 +84,9 @@ export default class SignInScreen extends Component {
                             />
                         </View>
 
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('SignUp')} style={styles.signUpLinkContainer}>
-                            <Text style={styles.signUpLinkText}>New here? Sign Up</Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('RecoverPwd')} style={styles.signUpLinkContainer}>
-                            <Text style={styles.signUpLinkText}>Forgot password? Recover</Text>
+                        <TouchableOpacity onPress={() => this.props.navigation.goBack()}
+                                          style={styles.signUpLinkContainer}>
+                            <Text style={styles.signUpLinkText}>I remembered my password</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -106,28 +95,23 @@ export default class SignInScreen extends Component {
         );
     }
 
-    _signInAsync = async () => {
+    _recoverAsync = async () => {
         if (!this.state.btnSignIn.isLoading) {
 
             this.setState({btnSignIn: {isLoading: true}});
-            const resp = await new ApiService().Auth().signIn(this.state.email, this.state.password, '000')
-
-            // console.log('token: ', resp.data.token);
+            const resp = await new ApiService().Auth().recoverPwd(this.state.email);
 
             if (resp.status == 200) {
-                await AsyncStorage.setItem('userToken', resp.data.token);
-                this.props.navigation.navigate('App');
+                this.props.navigation.goBack();
+
             } else {
-                this.setState({btnSignIn: {isLoading: false, title: 'Sign In'}});
-                alert('Invalid Email or Password.')
+                this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
+                alert('The request failed. Try again!')
             }
 
         }
     };
 
-    _handleSignUpLink() {
-
-    }
 }
 
 const styles = StyleSheet.create({

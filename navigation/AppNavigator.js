@@ -5,6 +5,7 @@ import {DrawerActions} from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import SignInScreen from '../screens/SignInScreen';
 import SignUpScreen from '../screens/SignUpScreen';
+import RecoverPwdScreen from '../screens/RecoverPwdScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import DrawerScreen from '../components/DrawerScreen';
 
@@ -19,7 +20,8 @@ import StepsScreen from '../screens/StepsScreen';
 
 const AuthStack = createStackNavigator({
     SignIn: SignInScreen,
-    SignUp: SignUpScreen
+    SignUp: SignUpScreen,
+    RecoverPwd: RecoverPwdScreen
 });
 
 
