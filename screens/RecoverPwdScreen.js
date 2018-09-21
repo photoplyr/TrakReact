@@ -13,7 +13,8 @@ import {
     Image,
     KeyboardAvoidingView,
     TouchableOpacity,
-    Text
+    Text,
+    Alert
 } from 'react-native';
 import {Button, Input} from 'react-native-elements'
 import ApiService from '../services/ApiService'
@@ -61,14 +62,15 @@ export default class RecoverPwdScreen extends Component {
                             containerStyle={styles.input}
                             value={this.state.email}
                             onChangeText={(email) => this.setState({email})}
-                            blurOnSubmit={false}
-                            returnKeyType={"next"}
-                            onSubmitEditing={() => {
-                                this.pwdInput.focus();
-                            }}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
+                            onSubmitEditing={this._recoverAsync}
                             errorStyle={{color: 'red'}}
                             errorMessage={this.state.errorFirstName}
                         />
+
 
                         <View style={styles.btnContainer}>
                             <Button
@@ -96,17 +98,49 @@ export default class RecoverPwdScreen extends Component {
     }
 
     _recoverAsync = async () => {
+        if(this.state.email.trim().length === 0)
+            return false;
+
         if (!this.state.btnSignIn.isLoading) {
 
             this.setState({btnSignIn: {isLoading: true}});
             const resp = await new ApiService().Auth().recoverPwd(this.state.email);
 
-            if (resp.status == 200) {
-                this.props.navigation.goBack();
+            console.log('resp: ', resp);
+
+            if (resp.status === 200) {
+                this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
+                Alert.alert(
+                    'Trak',
+                    'We have e-mailed your password reset link!',
+                    [
+                        {text: 'OK', onPress: () => this.props.navigation.goBack()},
+                    ],
+                    {cancelable: false}
+                );
+
+            } else if (resp.status === 404) {
+                this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
+
+                Alert.alert(
+                    'Trak',
+                    'We can\'t find a user with that e-mail address.',
+                    [
+                        {text: 'OK'},
+                    ],
+                    {cancelable: true}
+                );
 
             } else {
                 this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
-                alert('The request failed. Try again!')
+                Alert.alert(
+                    'Trak',
+                    'The request failed. Try again!',
+                    [
+                        {text: 'OK'},
+                    ],
+                    {cancelable: true}
+                );
             }
 
         }

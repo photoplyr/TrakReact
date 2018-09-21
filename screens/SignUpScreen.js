@@ -102,7 +102,10 @@ export default class SignUpScreen extends Component {
                             onChangeText={(email) => this.setState({email})}
                             errorStyle={{color: 'red'}}
                             errorMessage={this.state.errorEmail}
-
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
                             blurOnSubmit={false}
                             returnKeyType={"next"}
                             onSubmitEditing={() => {

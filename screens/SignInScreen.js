@@ -61,6 +61,10 @@ export default class SignInScreen extends Component {
                             onChangeText={(email) => this.setState({email})}
                             blurOnSubmit={false}
                             returnKeyType={"next"}
+                            autoCapitalize="none"
+                            autoCorrect={false}
+                            textContentType="emailAddress"
+                            keyboardType="email-address"
                             onSubmitEditing={() => {
                                 this.pwdInput.focus();
                             }}
@@ -71,6 +75,7 @@ export default class SignInScreen extends Component {
                             placeholder='Password'
                             secureTextEntry={true}
                             containerStyle={styles.input}
+                            textContentType="password"
                             value={this.state.password}
                             onChangeText={(password) => this.setState({password})}
                             ref={(input) => {
