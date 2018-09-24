@@ -9,7 +9,7 @@
       "ios",
       "android"
     ],
-    "version": "2.50.0",
+    "version": "2.51.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -24,14 +24,14 @@
       "assets/**/*"
     ],
     "ios": {
-      "buildNumber": "1",
+      "buildNumber": "2",
       "supportsTablet": false,
       "bundleIdentifier": "com.sandstonedx.com",
       "publishBundlePath": "ios/trak/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/trak/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "versionCode": 500,
+      "versionCode": 501,
       "permissions": [],
       "splash": {
         "backgroundColor": "#ffffff"
