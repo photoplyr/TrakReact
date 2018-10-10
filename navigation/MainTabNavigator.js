@@ -164,7 +164,6 @@ ExpertsStack.transitionConfig = () => {
 
 
 export default createBottomTabNavigator({
-
     // HomeStack,
     QuizStack,
     MainTrak,

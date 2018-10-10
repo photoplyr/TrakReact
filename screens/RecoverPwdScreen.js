@@ -98,40 +98,54 @@ export default class RecoverPwdScreen extends Component {
     }
 
     _recoverAsync = async () => {
-        if(this.state.email.trim().length === 0)
+        if (this.state.email.trim().length === 0)
             return false;
 
         if (!this.state.btnSignIn.isLoading) {
 
             this.setState({btnSignIn: {isLoading: true}});
-            const resp = await new ApiService().Auth().recoverPwd(this.state.email);
+            try {
+                const resp = await new ApiService().Auth().recoverPwd(this.state.email);
 
-            console.log('resp: ', resp);
+                console.log(resp);
 
-            if (resp.status === 200) {
-                this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
-                Alert.alert(
-                    'Trak',
-                    'We have e-mailed your password reset link!',
-                    [
-                        {text: 'OK', onPress: () => this.props.navigation.goBack()},
-                    ],
-                    {cancelable: false}
-                );
+                if (resp.status === 200) {
+                    this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
+                    Alert.alert(
+                        'Trak',
+                        'We have e-mailed your password reset link!',
+                        [
+                            {text: 'OK', onPress: () => this.props.navigation.goBack()},
+                        ],
+                        {cancelable: false}
+                    );
 
-            } else if (resp.status === 404) {
-                this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
+                }
+                else if (resp.status === 404) {
+                    this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
 
-                Alert.alert(
-                    'Trak',
-                    'We can\'t find a user with that e-mail address.',
-                    [
-                        {text: 'OK'},
-                    ],
-                    {cancelable: true}
-                );
+                    Alert.alert(
+                        'Trak',
+                        'We can\'t find a user with that e-mail address.',
+                        [
+                            {text: 'OK'},
+                        ],
+                        {cancelable: true}
+                    );
 
-            } else {
+                }
+                else {
+                    this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
+                    Alert.alert(
+                        'Trak',
+                        'The request failed. Try again!',
+                        [
+                            {text: 'OK'},
+                        ],
+                        {cancelable: true}
+                    );
+                }
+            }catch(e){
                 this.setState({btnSignIn: {isLoading: false, title: 'Send'}});
                 Alert.alert(
                     'Trak',
@@ -142,7 +156,6 @@ export default class RecoverPwdScreen extends Component {
                     {cancelable: true}
                 );
             }
-
         }
     };
 

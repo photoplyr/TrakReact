@@ -22,7 +22,7 @@ class DrawerScreen extends Component {
         });
         this.props.navigation.dispatch(navigateAction);
         this.props.navigation.dispatch(DrawerActions.closeDrawer())
-    }
+    };
 
     render() {
         return (
@@ -30,40 +30,83 @@ class DrawerScreen extends Component {
                 <ScrollView>
                     <View>
 
-                        {/*<Touchable*/}
-                            {/*style={styles.option}*/}
-                            {/*background={Touchable.Ripple('#ccc', false)}*/}
-                            {/*onPress={() => this.props.navigation.dispatch(DrawerActions.closeDrawer())}>*/}
-                            {/*<View style={{flexDirection: 'row', alignItems: "center",}}>*/}
-                                {/*<View style={styles.optionIconContainer}>*/}
-                                    {/*<Icon name="ios-body-outline" size={mainStyles.props.drawerMenuIcon.size}*/}
-                                          {/*color={mainStyles.props.drawerMenuIcon.color} style={{marginTop: 1}}/>*/}
-                                {/*</View>*/}
-                                {/*<View style={styles.optionTextContainer}>*/}
-                                    {/*<Text style={styles.optionText}>*/}
-                                        {/*Item 1*/}
-                                    {/*</Text>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
-                        {/*</Touchable>*/}
+                        <Touchable
+                            style={styles.option}
+                            background={Touchable.Ripple('#ccc', false)}
+                            onPress={() => {
+                                this.props.navigation.dispatch(DrawerActions.closeDrawer());
+                                this.props.navigation.navigate('QuizStack');
+                            }}>
+                            <View style={{flexDirection: 'row', alignItems: "center",}}>
+                                <View style={styles.optionIconContainer}>
+                                    <Icon name="ios-clipboard-outline" size={mainProps.drawerMenuIcon.size}
+                                          color={mainProps.drawerMenuIcon.color} style={{marginTop: 1}}/>
+                                </View>
+                                <View style={styles.optionTextContainer}>
+                                    <Text style={styles.optionText}>
+                                        Quiz
+                                    </Text>
+                                </View>
+                            </View>
+                        </Touchable>
+
+                        <Touchable
+                            style={styles.option}
+                            background={Touchable.Ripple('#ccc', false)}
+                            onPress={() => {
+                                this.props.navigation.dispatch(DrawerActions.closeDrawer());
+                                this.props.navigation.navigate('MainTrak');
+                            }}>
+                            <View style={{flexDirection: 'row', alignItems: "center",}}>
+                                <View style={styles.optionIconContainer}>
+                                    <Icon name="ios-people-outline" size={mainProps.drawerMenuIcon.size}
+                                          color={mainProps.drawerMenuIcon.color} style={{marginTop: 1}}/>
+                                </View>
+                                <View style={styles.optionTextContainer}>
+                                    <Text style={styles.optionText}>
+                                        Trak
+                                    </Text>
+                                </View>
+                            </View>
+                        </Touchable>
+
+                        <Touchable
+                            style={styles.option}
+                            background={Touchable.Ripple('#ccc', false)}
+                            onPress={() => {
+                                this.props.navigation.dispatch(DrawerActions.closeDrawer());
+                                this.props.navigation.navigate('Info');
+                            }}>
+                            <View style={{flexDirection: 'row', alignItems: "center",}}>
+                                <View style={styles.optionIconContainer}>
+                                    <Icon name="ios-information-circle-outline" size={mainProps.drawerMenuIcon.size}
+                                          color={mainProps.drawerMenuIcon.color} style={{marginTop: 1}}/>
+                                </View>
+                                <View style={styles.optionTextContainer}>
+                                    <Text style={styles.optionText}>
+                                        Into
+                                    </Text>
+                                </View>
+                            </View>
+                        </Touchable>
 
                         {/*<Touchable*/}
-                            {/*style={styles.option}*/}
-                            {/*background={Touchable.Ripple('#ccc', false)}*/}
-                            {/*onPress={() => {*/}
-                                {/*this.props.navigation.dispatch(DrawerActions.closeDrawer());*/}
-                            {/*}}>*/}
-                            {/*<View style={{flexDirection: 'row', alignItems: "center",}}>*/}
-                                {/*<View style={styles.optionIconContainer}>*/}
-                                    {/*<Icon name="ios-chatbubbles-outline" size={mainStyles.props.drawerMenuIcon.size}*/}
-                                          {/*color={mainStyles.props.drawerMenuIcon.color} style={{marginTop: 1}}/>*/}
-                                {/*</View>*/}
-                                {/*<View style={styles.optionTextContainer}>*/}
-                                    {/*<Text style={styles.optionText}>*/}
-                                        {/*Enter Trak Result*/}
-                                    {/*</Text>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
+                        {/*style={styles.option}*/}
+                        {/*background={Touchable.Ripple('#ccc', false)}*/}
+                        {/*onPress={() => {*/}
+                        {/*this.props.navigation.dispatch(DrawerActions.closeDrawer());*/}
+                        {/*}}>*/}
+                        {/*<View style={{flexDirection: 'row', alignItems: "center",}}>*/}
+                        {/*<View style={styles.optionIconContainer}>*/}
+                        {/*<Icon name="ios-chatbubbles-outline" size={mainStyles.props.drawerMenuIcon.size}*/}
+                        {/*color={mainStyles.props.drawerMenuIcon.color} style={{marginTop: 1}}/>*/}
+                        {/*</View>*/}
+                        {/*<View style={styles.optionTextContainer}>*/}
+                        {/*<Text style={styles.optionText}>*/}
+                        {/*Enter Trak Result*/}
+                        {/*</Text>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
                         {/*</Touchable>*/}
                     </View>
 
@@ -106,6 +149,7 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingTop: 15,
     },
+    optionTextContainer: {},
     optionsTitleText: {
         fontSize: 16,
         marginLeft: 15,

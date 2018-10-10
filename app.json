@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Trak",
-    "description": "The Trak: Sperm Health & Fertility App is the only app that assesses your health and lifestyle risks.",
+    "description": "The Trak: Sperm Health & Fertility App is the only app that assesses your health and lifestyle risks. Build 2",
     "slug": "trak-react",
     "privacy": "public",
     "sdkVersion": "29.0.0",
@@ -9,7 +9,7 @@
       "ios",
       "android"
     ],
-    "version": "2.50.0",
+    "version": "4.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "splash": {
@@ -24,14 +24,14 @@
       "assets/**/*"
     ],
     "ios": {
-      "buildNumber": "1",
+      "buildNumber": "149",
       "supportsTablet": false,
-      "bundleIdentifier": "com.sandstonedx.com",
+      "bundleIdentifier": "com.sandstonedx.trakdemo1",
       "publishBundlePath": "ios/trak/Supporting/shell-app.bundle",
       "publishManifestPath": "ios/trak/Supporting/shell-app-manifest.json"
     },
     "android": {
-      "versionCode": 500,
+      "versionCode": 501,
       "permissions": [],
       "splash": {
         "backgroundColor": "#ffffff"

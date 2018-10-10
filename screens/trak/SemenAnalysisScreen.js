@@ -31,7 +31,7 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
         this.state = {
             language: null,
-            value: 15,
+            value: 15.5,
             isBtnLoading: false
         }
     }
@@ -58,11 +58,12 @@ export default class EnterTrakResultScreen extends BaseScreen {
                         <View style={styles.btnControlContainer}>
                             <NumericInput
                                 value={this.state.value}
-                                onChange={value => this.setState({value})}
+                                onChange={value => this.setState({value: value})}
                                 totalWidth={240}
                                 totalHeight={50}
                                 iconSize={25}
                                 step={0.5}
+                                rounded
                                 valueType='real'
                                 minValue={0}
                                 maxValue={100}

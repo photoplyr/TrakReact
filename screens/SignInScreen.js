@@ -117,7 +117,7 @@ export default class SignInScreen extends Component {
             this.setState({btnSignIn: {isLoading: true}});
             const resp = await new ApiService().Auth().signIn(this.state.email, this.state.password, '000')
 
-            // console.log('token: ', resp.data.token);
+            console.log('token: ', resp.data);
 
             if (resp.status == 200) {
                 await AsyncStorage.setItem('userToken', resp.data.token);
