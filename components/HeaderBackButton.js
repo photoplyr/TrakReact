@@ -11,8 +11,8 @@ export default class HeaderBackButton extends React.PureComponent {
     render() {
         const {navigation} = this.props;
         return (
-            <HeaderButtons IconComponent={Icon} iconSize={25} color="#fff">
-                <HeaderButtons.Item title="Back" iconName="ios-arrow-back" onPress={navigation.getParam('goBack')}/>
+            <HeaderButtons  IconComponent={Icon} iconSize={30} color="#fff">
+                <HeaderButtons.Item style={{margin: 10}} title="Back" iconName="ios-arrow-back" onPress={navigation.getParam('goBack')}/>
             </HeaderButtons>
         )
     }

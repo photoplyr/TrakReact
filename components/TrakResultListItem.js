@@ -49,9 +49,9 @@ export default class TrakResultListItem extends React.PureComponent {
                 </View>
                 <TouchableOpacity
                     onPress={() => onPressRemoveItem(_key)}>
-                    <Icon name="ios-close" size={25}
+                    <Icon name="ios-close" size={30}
                           color={mainProps.drawerMenuIcon.color}
-                          style={{}}/>
+                          style={{paddingLeft: 7, paddingRight: 7}}/>
                 </TouchableOpacity>
             </View>
 

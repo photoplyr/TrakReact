@@ -84,7 +84,7 @@ class DrawerScreen extends Component {
                                 </View>
                                 <View style={styles.optionTextContainer}>
                                     <Text style={styles.optionText}>
-                                        Into
+                                        Info
                                     </Text>
                                 </View>
                             </View>

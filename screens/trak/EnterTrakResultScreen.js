@@ -33,7 +33,6 @@ export default class EnterTrakResultScreen extends BaseScreen {
 
     componentDidMount() {
         super.componentDidMount();
-        console.log('componentDidMount..');
     }
 
     constructor(props) {
@@ -234,10 +233,6 @@ export default class EnterTrakResultScreen extends BaseScreen {
         this.setState({styleBarBottom: minBarBottom * percentSize});
         this.setState({styleBarBgBlackBigHeight: minBarBgBlackBig * percentSize});
         maxBarHeight = minMaxBarHeight * percentSize;
-
-        console.log({width, height});
-
-
     }
 }
 

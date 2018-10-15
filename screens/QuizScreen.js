@@ -1,7 +1,6 @@
 import React from 'react';
 import {View, WebView, AsyncStorage, Text, ActivityIndicator, Linking, Alert, StyleSheet} from 'react-native';
 
-let userToken = null;
 
 export default class QuizScreen extends React.Component {
     static navigationOptions = {
@@ -13,12 +12,14 @@ export default class QuizScreen extends React.Component {
         super(props);
 
         this.state = {
-            isLoaded: false
+            isLoaded: false,
+            userToken: null
         };
     };
 
     async componentDidMount() {
-        userToken = await AsyncStorage.getItem('userToken');
+        let userToken = await AsyncStorage.getItem('userToken');
+        this.setState({userToken});
     };
 
     render() {
@@ -28,23 +29,22 @@ export default class QuizScreen extends React.Component {
 
             <View style={styles.container}>
 
-                <WebView
+                {this.state.userToken ?
+                    <WebView
                     source={{uri: 'https://trakfertility.tools/api/embed/quiz/3'}}
-                    injectedJavaScript={`var Token = '` + userToken + `'; ${jsCodeURLHandler}`}
+                    injectedJavaScript={`var Token = '${this.state.userToken}';  ${jsCodeURLHandler}`}
                     javaScriptEnabled={true}
                     onMessage={this.onMessage.bind(this)}
-                    onLoadEnd={() => this.setState({isLoaded: true}) }
-                    // onLoadStart={() => this.setState({isLoaded: false}) }
-                />
+                    onLoadEnd={() => this.setState({isLoaded: true})}
+                    />
+                : null
+                }
 
                 {!this.state.isLoaded ? <View style={{position: 'absolute'}}>
                     <ActivityIndicator size="large"/>
                 </View> : null}
 
-
             </View>
-
-
         );
     };
 
