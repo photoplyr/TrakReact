@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, WebView, AsyncStorage, Text, ActivityIndicator, Linking, Alert, StyleSheet} from 'react-native';
-
+import Expo  from 'expo';
 
 export default class QuizScreen extends React.Component {
     static navigationOptions = {
@@ -13,13 +13,33 @@ export default class QuizScreen extends React.Component {
 
         this.state = {
             isLoaded: false,
-            userToken: null
+            userToken: null,
+            deviceInfo: {
+                uid: null, // C252D9CF-3A1F-468D-A24C-4CE03642DB31
+                name: null, // iPhone XR
+                os: null // ios || android
+            }
         };
     };
 
     async componentDidMount() {
         let userToken = await AsyncStorage.getItem('userToken');
-        this.setState({userToken});
+
+        const deviceInfo = {
+            uid: Expo.Constants.deviceId,
+            name: Expo.Constants.deviceName,
+            os: null
+        };
+
+        if(Expo.Constants.platform['ios']){
+            deviceInfo.os = 'ios';
+        }else if(Expo.Constants.platform['android']){
+            deviceInfo.os = 'android';
+        }
+
+         console.log('DEVICE INFO: ', deviceInfo); //deviceId, deviceName
+
+        this.setState({userToken, deviceInfo});
     };
 
     render() {
@@ -32,7 +52,7 @@ export default class QuizScreen extends React.Component {
                 {this.state.userToken ?
                     <WebView
                     source={{uri: 'https://trakfertility.tools/api/embed/quiz/3'}}
-                    injectedJavaScript={`var Token = '${this.state.userToken}';  ${jsCodeURLHandler}`}
+                    injectedJavaScript={`var Token = '${this.state.userToken}'; var DeviceInfo = '${JSON.stringify(this.state.deviceInfo)}';  ${jsCodeURLHandler}`}
                     javaScriptEnabled={true}
                     onMessage={this.onMessage.bind(this)}
                     onLoadEnd={() => this.setState({isLoaded: true})}

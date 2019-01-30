@@ -133,7 +133,7 @@ export default class EnterTrakResultScreen extends BaseScreen {
                     <View style={styles.bottomContainer}>
                         <Text style={styles.bottomText}>Drag the graphic or tap the arrows to fill the channel to the
                             level
-                            that matches your Trak result.</Text>
+                            that matches your Trak result</Text>
 
                         <Button
                             title="OK"
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
         marginLeft: 16,
         marginRight: 16,
         fontSize: 14,
-        textAlign: 'justify'
+        textAlign: 'center'
     },
     bottomContainer: {
         marginBottom: 10
